@@ -1,6 +1,13 @@
 package com.project.facade;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
+
+import com.project.businesscomponent.CorsistaBC;
+import com.project.businesscomponent.CorsoBC;
+import com.project.businesscomponent.model.Corsista;
+import com.project.businesscomponent.model.Corso;
 
 // Bisogna importare le classi bc perche nonn erano ancora state fatte al momento della creazione della facciata
 public class AdminFacade {
@@ -16,17 +23,18 @@ public class AdminFacade {
 
 	//CORSISTA
 	
-	public int corsistaTot() {
+	public int corsistaTot() throws ClassNotFoundException, IOException, SQLException {
 		CorsistaBC cBC=new CorsistaBC();
 		return cBC.corsistaTot();
 	}
 	
-	public void createCorsista(Corsista corsista) {
+	public void createCorsista(Corsista corsista) throws ClassNotFoundException, IOException, SQLException {
 		CorsistaBC cBC=new CorsistaBC();
 		cBC.create(corsista);		
 	}
 	
-	public Corsista[] elencoCorsisti() {
+	public Corsista[] elencoCorsisti() throws SQLException, ClassNotFoundException, IOException {
+ 
 		CorsistaBC cBC=new CorsistaBC();
 		return cBC.getAll();	
 	}
@@ -35,7 +43,7 @@ public class AdminFacade {
 	
 	public Corso corsoPiuFreq() {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.corsoBC();	
+		return cBC.corsoPiuFreq();	
 	}
 
 	public void deleteCorsi(Corso[]corsi) {
@@ -45,7 +53,7 @@ public class AdminFacade {
 	
 	public Date dataInizioUltimoCorso() {
 		CorsoBC cBC=new CorsoBC();
-		cBC.dataInizioUltimoCorso();
+		return cBC.dataInizioUltimoCorso();
 	}
 	
 	public double durataMediaCorsi() {
@@ -58,7 +66,7 @@ public class AdminFacade {
 		return cBC.numeroComm();
 	}
 	
-	public Corsi[] corsiDisp() {
+	public Corso[] corsiDisp() {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsiDisp();
 	}

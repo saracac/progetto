@@ -19,7 +19,7 @@ public class CorsistaIdGenerator implements IdGeneratorInterface,DAOConstants{
 		conn=DBAccess.getConnection();
 	}
 	
-	public CorsistaIdGenerator getInstance() throws ClassNotFoundException, IOException, SQLException {
+	public static CorsistaIdGenerator getInstance() throws ClassNotFoundException, IOException, SQLException {
 		if(istanza==null)
 			istanza=new CorsistaIdGenerator();
 		return istanza;	
