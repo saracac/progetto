@@ -10,6 +10,6 @@ public interface DAOConstants {
 	//CORSO
 	
 	//CORSISTA
-	
+	String SELECT_CORSISTA_SEQ="select corsista_seq.nextval from dual";
 	
 }
