@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.project.architecture.dao.AmministratoreDAO;
+import com.project.architecture.dbaccess.DBAccess;
 import com.project.businesscomponent.model.Amministratore;
 
 class AmministratoreBCTest {
@@ -24,7 +25,7 @@ class AmministratoreBCTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
-		conn=DBAccess.close();
+		conn=DBAccess.closeConnection();
 	}
 
 	@Test
