@@ -46,7 +46,7 @@ public class AdminFacade {
 		return cBC.corsoPiuFreq();	
 	}
 
-	public void deleteCorsi(Corso[]corsi) throws SQLException {
+	public void deleteCorsi(Long[]corsi) throws SQLException {
 		CorsoBC cBC=new CorsoBC();
 		cBC.deleteCorsi(corsi);
 	}
