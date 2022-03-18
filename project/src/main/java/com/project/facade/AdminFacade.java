@@ -1,6 +1,11 @@
 package com.project.facade;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
+
+import com.project.businesscomponent.CorsistaBC;
+import com.project.businesscomponent.model.Corsista;
 
 // Bisogna importare le classi bc perche nonn erano ancora state fatte al momento della creazione della facciata
 public class AdminFacade {
@@ -21,12 +26,13 @@ public class AdminFacade {
 		return cBC.corsistaTot();
 	}
 	
-	public void createCorsista(Corsista corsista) {
+	public void createCorsista(Corsista corsista) throws ClassNotFoundException, IOException, SQLException {
 		CorsistaBC cBC=new CorsistaBC();
 		cBC.create(corsista);		
 	}
 	
-	public Corsista[] elencoCorsisti() {
+	public Corsista[] elencoCorsisti() throws SQLException, ClassNotFoundException, IOException {
+ {
 		CorsistaBC cBC=new CorsistaBC();
 		return cBC.getAll();	
 	}
