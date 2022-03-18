@@ -109,26 +109,44 @@ public class CorsoDAO implements DAOConstants{
 		return corsi;
 	}
 	
-	public Corso corsoPiuFreq(Connection conn) {
-		Statement stmt;
-		try {
-			stmt = conn.createStatement( 
+	public Corso corsoPiuFreq(Connection conn) throws SQLException {
+		Statement stmt = conn.createStatement( 
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			
 		ResultSet rs = stmt.executeQuery(""); // SELECT_CORSO_PIUFREQ
 		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Corso c = null;
+		if (rs.next()) {
+			c = new Corso();
+			c.setCodCorso(rs.getLong(1));
+			c.setNomeCorso(rs.getString(2));
+			c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
+			c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
+			c.setCosto(rs.getDouble(5));
+			c.setCommenti(rs.getString(6));
+			c.setAula(rs.getShort(7));
+			return c;
 		}
+		return null;
 	}
 	
-	public double durataMediaCorsi() {
-		
+	public double durataMediaCorsi(Connection conn) throws SQLException {
+		Statement stmt = conn.createStatement( 
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		ResultSet rs = stmt.executeQuery(""); // SELECT_DURATA_MEDIA_CORSI
+	
+		return rs.getDouble(1);
 	}
 	
-	public int numeroComm() {
-		
+	public int numeroComm(Connection conn) throws SQLException 
+	{
+		Statement stmt = conn.createStatement( 
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		ResultSet rs = stmt.executeQuery(""); // SELECT_NUMERO_COMMENTI
+	
+		return rs.getInt(1);
 	}
 }

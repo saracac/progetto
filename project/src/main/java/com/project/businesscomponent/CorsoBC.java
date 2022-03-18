@@ -15,90 +15,49 @@ public class CorsoBC {
 	
 	public CorsoBC() {}
 	
-	public void create(Corso corso)
+	public void create(Corso corso) throws ClassNotFoundException, IOException, SQLException
 	{
-		try {
 		corso.setCodCorso(csGen.getInstance().getNextId());
 		CorsoDAO.getFactory().create(conn, corso);
-		}
-		catch (SQLException | ClassNotFoundException | IOException exc) {
-			exc.printStackTrace();
-			System.out.println("Errore nella creazione del corso");
-		}	
 	}
 	
-	public void delete(Corso corso) // DELETE CORSO
+	public void delete(Corso corso) throws SQLException
 	{
-		try {
-			CorsoDAO.getFactory().delete(conn, corso);
-			}
-			catch (SQLException exc) {
-				exc.printStackTrace();
-				System.out.println("Errore nella cancellazione del corso");
-			}
+		CorsoDAO.getFactory().delete(conn, corso);
 	}
 	
-	public void deleteCorsi(Corso[] corsi) // DELETE CORSI
+	public void deleteCorsi(Corso[] corsi) throws SQLException
 	{
 		for (int i = 0; i < corsi.length ; i++) {
-			try {
-				CorsoDAO.getFactory().delete(conn, corsi[i]);
-				}
-				catch (SQLException exc) {
-					exc.printStackTrace();
-					System.out.println("Errore nella cancellazione del corso: " + corsi[i]);
-				}
-			}
+			CorsoDAO.getFactory().delete(conn, corsi[i]);
+		}
 	}
 	
-	public Corso getByPk(long codCorso) 
+	public Corso getByPk(long codCorso) throws SQLException 
 	{
-		Corso corso = null;
-		try {
-			corso = CorsoDAO.getFactory().getByPk(conn, codCorso);
-		} catch (SQLException exc) {
-			exc.printStackTrace();
-		}
-		return corso;
+		return CorsoDAO.getFactory().getByPk(conn, codCorso);
 	}
 	
-	public Corso[] corsiDisp() 
+	public Corso[] corsiDisp() throws SQLException 
 	{
-		Corso[] corsi = null;
-		try {
-			corsi = CorsoDAO.getFactory().getAll(conn);
-		} catch (SQLException exc) {
-			exc.printStackTrace();
-		}
+		Corso[] corsi = CorsoDAO.getFactory().getAll(conn);
 		return corsi;
 	}
 	
-	public Date dataInizioUltimoCorso() 
+	public Date dataInizioUltimoCorso() throws SQLException 
 	{
-		Date data = null;
-		try {
-			data = CorsoDAO.getFactory().dataInizioUltimoCorso(conn);
-		} catch (SQLException exc) {
-			exc.printStackTrace();
-		}
-		return data;
+		return CorsoDAO.getFactory().dataInizioUltimoCorso(conn);
 	}
 	
-	public Corso corsoPiuFreq() {
-		Corso corso = null;
-		try {
-			corso = CorsoDAO.getFactory().corsoPiuFreq(conn);
-		} catch (SQLException exc) {
-			exc.printStackTrace();
-		}
-		return corso;
+	public Corso corsoPiuFreq() throws SQLException {
+		return CorsoDAO.getFactory().corsoPiuFreq(conn);
 	}
 	
-	public double durataMediaCorsi() {
-		return 0.00;
+	public double durataMediaCorsi() throws SQLException {
+		return CorsoDAO.getFactory().durataMediaCorsi(conn);
 	}
 	
-	public int numeroComm() {
-		return 0;
+	public double numeroComm() throws SQLException {
+		return CorsoDAO.getFactory().numeroComm(conn);
 	}
 }
