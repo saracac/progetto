@@ -12,15 +12,20 @@ import com.project.businesscomponent.model.Amministratore;
 public class AmministratoreDAO implements DAOConstants{
 	private CachedRowSet rowSet;
 	
-	// Costante da eliminare thx Sara
-	String SELECT_ADMIN_BYPK="Select nomeAdmin,cognomeAdmin from Amministratore where codAdmin=?";
-	
-	public static AmministratoreDAO getFactory() {
-		return new AmministratoreDAO();
+	public static AmministratoreDAO getFactory() throws SQLException {
+		try {
+			return new AmministratoreDAO();
+		} catch (SQLException e) {
+			throw e;
+		}
 	}
-	private AmministratoreDAO() {
+	private AmministratoreDAO() throws SQLException {
 		
-		rowSet=RowSetProvider.newFactory().createCachedRowSet();
+		try {
+			rowSet=RowSetProvider.newFactory().createCachedRowSet();
+		} catch (SQLException e) {
+			throw e;
+		}
 		
 	}
 	
