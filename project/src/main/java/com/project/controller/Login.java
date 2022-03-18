@@ -31,17 +31,17 @@ public class Login extends HttpServlet {
 		
 		if(nTentativi>5)
 			response.sendRedirect("accessonegato.jsp");
-		if(codiceAdmin!=null&&nomeAdmin!=null) {
+		else if(codiceAdmin!=null&&nomeAdmin!=null) {
 			long codAdmin=Long.parseLong(request.getParameter("codAdmin"));
+			System.out.println(nTentativi);
 			try {
 				if(LoginUtility.getFactory().accessGranted(nomeAdmin,codAdmin)) {
 					session.setAttribute("nomeAdmin", nomeAdmin);	
 					response.sendRedirect("index.jsp");
 				}else {
 					nTentativi++;
-					session.setAttribute("tentativi", nTentativi);
-					response.sendRedirect("index.jsp");
-				}
+					session.setAttribute("tentativo", nTentativi);
+					response.sendRedirect("login.jsp");}
 			}catch(ClassNotFoundException exc) {
 				System.err.println("ClassNotFoundException");;
 			}catch(SQLException sql) {

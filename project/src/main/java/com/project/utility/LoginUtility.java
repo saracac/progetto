@@ -16,12 +16,17 @@ public class LoginUtility {
 	private LoginUtility() {
 	}
 
-	public boolean accessGranted(String nomeAdmin,long codAdmin) throws SQLException, ClassNotFoundException, IOException {
-		AmministratoreBC aBC=new AmministratoreBC();
+	public boolean accessGranted(String nomeAdmin,long codAdmin) throws SQLException, ClassNotFoundException, IOException{
+		try{
+			AmministratoreBC aBC=new AmministratoreBC();
+		
 		String nomeGiusto=aBC.getByPk(codAdmin).getNomeAdmin();
 		if(nomeGiusto!=null&&nomeGiusto.equals(nomeAdmin))
 			return true;
 		else
 			return false;
+		}catch(NullPointerException e) {
+			return false;	
+		}
 	}
 }
