@@ -21,12 +21,12 @@ public class CorsoBC {
 		CorsoDAO.getFactory().create(conn, corso);
 	}
 	
-	public void delete(Corso corso) throws SQLException
+	public void delete(long codCorso) throws SQLException
 	{
-		CorsoDAO.getFactory().delete(conn, corso);
+		CorsoDAO.getFactory().delete(conn, codCorso);
 	}
 	
-	public void deleteCorsi(Corso[] corsi) throws SQLException
+	public void deleteCorsi(Long[] corsi) throws SQLException
 	{
 		for (int i = 0; i < corsi.length ; i++) {
 			CorsoDAO.getFactory().delete(conn, corsi[i]);
@@ -40,7 +40,7 @@ public class CorsoBC {
 	
 	public Corso[] corsiDisp() throws SQLException 
 	{
-		Corso[] corsi = CorsoDAO.getFactory().getAll(conn);
+		Corso[] corsi = CorsoDAO.getFactory().getCorsiDisponibili(conn);
 		return corsi;
 	}
 	

@@ -39,9 +39,9 @@ public class CorsoDAO implements DAOConstants{
 		rowSet.acceptChanges(conn);
 	}
 	
-	public void delete(Connection conn, Corso corso) throws SQLException {
+	public void delete(Connection conn, Long codCorso) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement(DELETE_CORSO);
-		ps.setLong(1, corso.getCodCorso());
+		ps.setLong(1, codCorso);
 		ps.execute();
 		conn.commit();
 	}
@@ -88,6 +88,30 @@ public class CorsoDAO implements DAOConstants{
 				ResultSet.CONCUR_READ_ONLY); 
 		
 		ResultSet rs = stmt.executeQuery(SELECT_CORSI);
+		
+		rs.last();
+		int dim = rs.getRow();
+		Corso[] corsi = new Corso[dim];
+		
+		rs.beforeFirst();
+		
+		for(int i = 0; rs.next() ; i++) {
+		Corso c = new Corso();
+		c.setCodCorso(rs.getLong(1));
+		c.setNomeCorso(rs.getString(2));
+		c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
+		c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
+		c.setCosto(rs.getDouble(5));
+		c.setCommenti(rs.getString(6));
+		c.setAula(rs.getShort(7));
+		corsi[i] = c;
+		}
+		return corsi;
+	}
+	
+	public Corso[] getCorsiDisponibili(Connection conn) throws SQLException {
+		
+		ResultSet rs = conn.createStatement().executeQuery(SELECT_CORSI_DISPONIBILI);
 		
 		rs.last();
 		int dim = rs.getRow();
