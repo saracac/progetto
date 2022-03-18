@@ -41,22 +41,22 @@ public class AdminFacade {
 	
 	//CORSO
 	
-	public Corso corsoPiuFreq() {
+	public Corso corsoPiuFreq() throws SQLException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsoPiuFreq();	
 	}
 
-	public void deleteCorsi(Corso[]corsi) {
+	public void deleteCorsi(Corso[]corsi) throws SQLException {
 		CorsoBC cBC=new CorsoBC();
 		cBC.deleteCorsi(corsi);
 	}
 	
-	public Date dataInizioUltimoCorso() {
+	public Date dataInizioUltimoCorso() throws SQLException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.dataInizioUltimoCorso();
 	}
 	
-	public double durataMediaCorsi() {
+	public double durataMediaCorsi() throws SQLException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.durataMediaCorsi();
 	}
@@ -66,7 +66,7 @@ public class AdminFacade {
 		return cBC.numeroComm();
 	}
 	
-	public Corso[] corsiDisp() {
+	public Corso[] corsiDisp() throws SQLException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsiDisp();
 	}

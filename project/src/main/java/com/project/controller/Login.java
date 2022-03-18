@@ -1,6 +1,8 @@
 package com.project.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,18 +23,29 @@ public class Login extends HttpServlet {
 		String nomeAdmin=request.getParameter("nomeAdmin");
 		HttpSession session= request.getSession();
 		
-		int nTentativi;
+		int nTentativi=1;
 		if(session.getAttribute("tentativo")!=null)
 			nTentativi=(int) session.getAttribute("tentativo");
 		else
 			session.setAttribute("tentativo",1);
+		
 		if(nTentativi>5)
 			response.sendRedirect("accessonegato.jsp");
 		if(codiceAdmin!=null&&nomeAdmin!=null) {
 			long codAdmin=Long.parseLong(request.getParameter("codAdmin"));
-			try {	
-				boolean accesso=LoginUtility.getFactory().accessGranted(nomeAdmin,codAdmin);
-				
+			try {
+				if(LoginUtility.getFactory().accessGranted(nomeAdmin,codAdmin)) {
+					session.setAttribute("nomeAdmin", nomeAdmin);	
+					response.sendRedirect("index.jsp");
+				}else {
+					nTentativi++;
+					session.setAttribute("tentativi", nTentativi);
+					response.sendRedirect("index.jsp");
+				}
+			}catch(ClassNotFoundException exc) {
+				System.err.println("ClassNotFoundException");;
+			}catch(SQLException sql) {
+				System.err.println("SQLException");
 			}
 		}
 	}
