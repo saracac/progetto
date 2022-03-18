@@ -14,13 +14,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import com.project.architecture.dao.CorsoDAO;
+import com.project.architecture.dbaccess.DBAccess;
 import com.project.businesscomponent.CorsoBC;
 import com.project.businesscomponent.model.Corso;
 
 @TestMethodOrder(OrderAnnotation.class)
 class CorsoBCTest 
 {
-	private static Corso corso, corso2;
+	private static Corso corso, corsi1, corsi2;
 	private static Corso[] corsi;
 	private static Connection conn;
 	
@@ -36,25 +37,34 @@ class CorsoBCTest
 		corso.setCommenti("matematica avanzata");
 		corso.setAula((short) 33);
 		
-		corso2 = new Corso();
-		corso2.setCodCorso(21);
-		corso2.setNomeCorso("Informatica");
-		corso2.setDataInizio(new Date());
-		corso2.setDataFine(new Date());
-		corso2.setCosto(300.00);
-		corso2.setCommenti("informatica base");
-		corso2.setAula((short) 12);
+		corsi1 = new Corso();
+		corsi1.setCodCorso(21);
+		corsi1.setNomeCorso("Informatica");
+		corsi1.setDataInizio(new Date());
+		corsi1.setDataFine(new Date());
+		corsi1.setCosto(300.00);
+		corsi1.setCommenti("informatica base");
+		corsi1.setAula((short) 12);
+		
+		corsi2 = new Corso();
+		corsi2.setCodCorso(22);
+		corsi2.setNomeCorso("Scienze");
+		corsi2.setDataInizio(new Date());
+		corsi2.setDataFine(new Date());
+		corsi2.setCosto(500.10);
+		corsi2.setCommenti("Scienze intermedie");
+		corsi2.setAula((short) 18);
 		
 		corsi = new Corso[2];
 		
-		corsi[0] = corso;
-		corsi[1] = corso2;
+		corsi[0] = corsi1;
+		corsi[1] = corsi2;
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {	
 		try {
-			CorsoDAO.getFactory().delete(conn, corso); // fallirà sempre se testDeleteCorsi() ha funzionato
+			CorsoDAO.getFactory().delete(conn, corso);
 			System.out.println("Corso eliminato");
 			} catch(SQLException exc) 
 			{
@@ -71,7 +81,8 @@ class CorsoBCTest
 	void testCreateCorso(){
 		try {
 		CorsoDAO.getFactory().create(conn, corso);
-		CorsoDAO.getFactory().create(conn, corso2);
+		CorsoDAO.getFactory().create(conn, corsi1);
+		CorsoDAO.getFactory().create(conn, corsi2);
 		System.out.println("Corso creato");
 		} catch(SQLException exc) 
 		{
@@ -101,9 +112,9 @@ class CorsoBCTest
 	
 	@Test
 	@Order(4)
-	void testGetLastDate() {
+	void testDataInizioUltimoCorso() {
 		try {
-			Date d = CorsoDAO.getFactory().getLastDate(conn);
+			Date d = CorsoDAO.getFactory().dataInizioUltimoCorso(conn);
 			System.out.println("Data inizio dell'ultimo corso: " + d);
 			} catch(SQLException exc)
 			{
@@ -137,12 +148,20 @@ class CorsoBCTest
 	@Order(5)
 	void testDeleteCorsi() {
 		CorsoBC cBC = new CorsoBC();
-		cBC.delete(conn, corsi);
+		try {
+			cBC.deleteCorsi(corsi);
+		} catch(SQLException exc) 
+		{
+			exc.printStackTrace();
+			System.out.println(exc.getMessage());
+			System.out.println(exc.getCause());
+			System.out.println(exc.getErrorCode());
+			fail("Eliminazione corsi fallita");
+		}
 		System.out.println("Corsi rimasti: ");
 		try {
 			Corso[] corsi = CorsoDAO.getFactory().getAll(conn);
-			assert(corsi.length == 0); // dovrebbe cancellarli entrambi
-			for(Corso c : corsi) // li cerco di printare per verificare se ha fallito o meno
+			for(Corso c : corsi)
 				System.out.println(c);
 			} catch(SQLException exc)
 			{
