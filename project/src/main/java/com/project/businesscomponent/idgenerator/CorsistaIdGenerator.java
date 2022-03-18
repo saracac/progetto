@@ -9,7 +9,7 @@ import java.sql.Statement;
 import com.project.architecture.dao.DAOConstants;
 import com.project.architecture.dbaccess.DBAccess;
 
-public class CorsistaIdGenerator implements DAOConstants{
+public class CorsistaIdGenerator implements IdGeneratorInterface,DAOConstants{
 	private static CorsistaIdGenerator istanza;
 	private Connection conn;
 	private Statement stmt;
@@ -25,7 +25,7 @@ public class CorsistaIdGenerator implements DAOConstants{
 		return istanza;	
 	}
 	
-	
+	@Override
 	public long getNextId()
 			throws ClassNotFoundException, IOException, SQLException {
 		long id=0;
