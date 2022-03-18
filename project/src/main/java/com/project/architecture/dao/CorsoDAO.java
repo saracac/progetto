@@ -111,10 +111,10 @@ public class CorsoDAO implements DAOConstants{
 	
 	public Corso corsoPiuFreq(Connection conn) throws SQLException {
 		Statement stmt = conn.createStatement( 
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.TYPE_FORWARD_ONLY,
 					ResultSet.CONCUR_READ_ONLY);
 			
-		ResultSet rs = stmt.executeQuery(""); // SELECT_CORSO_PIUFREQ
+		ResultSet rs = stmt.executeQuery(SELECT_CORSO_PIUFREQ);
 		
 		Corso c = null;
 		if (rs.next()) {
@@ -133,9 +133,9 @@ public class CorsoDAO implements DAOConstants{
 	
 	public double durataMediaCorsi(Connection conn) throws SQLException {
 		Statement stmt = conn.createStatement( 
-				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);
-		ResultSet rs = stmt.executeQuery(""); // SELECT_DURATA_MEDIA_CORSI
+		ResultSet rs = stmt.executeQuery(SELECT_DURATA_MEDIA_CORSI);
 	
 		return rs.getDouble(1);
 	}
@@ -143,10 +143,10 @@ public class CorsoDAO implements DAOConstants{
 	public int numeroComm(Connection conn) throws SQLException 
 	{
 		Statement stmt = conn.createStatement( 
-				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);
-		ResultSet rs = stmt.executeQuery(""); // SELECT_NUMERO_COMMENTI
-	
+		ResultSet rs = stmt.executeQuery(SELECT_NUMERO_COMMENTI);
+		
 		return rs.getInt(1);
 	}
 }
