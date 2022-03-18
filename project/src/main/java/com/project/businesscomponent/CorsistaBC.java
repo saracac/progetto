@@ -46,8 +46,11 @@ public class CorsistaBC {
 	}
 }
 	
-	public int corsistaTot() {
-		
-		return 0;
+	public int corsistaTot() throws SQLException {
+		try {
+		return CorsistaDAO.getFactory().corsistaTot(conn);
+	}catch(SQLException sql) {
+		throw sql;
 	}
+}
 }

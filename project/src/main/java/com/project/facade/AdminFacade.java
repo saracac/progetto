@@ -23,7 +23,7 @@ public class AdminFacade {
 
 	//CORSISTA
 	
-	public int corsistaTot() {
+	public int corsistaTot() throws ClassNotFoundException, IOException, SQLException {
 		CorsistaBC cBC=new CorsistaBC();
 		return cBC.corsistaTot();
 	}
@@ -34,7 +34,7 @@ public class AdminFacade {
 	}
 	
 	public Corsista[] elencoCorsisti() throws SQLException, ClassNotFoundException, IOException {
- {
+ 
 		CorsistaBC cBC=new CorsistaBC();
 		return cBC.getAll();	
 	}

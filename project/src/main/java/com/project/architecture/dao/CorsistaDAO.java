@@ -94,5 +94,15 @@ public class CorsistaDAO implements DAOConstants {
 	}
 	
 	String COUNT_CORSISTI = "Select count(cdCorsisti) from corsisti";
-	public int corsistaTot(Connection conn, ) 
+	public int corsistaTot(Connection conn) throws SQLException {
+		int val = 0;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(COUNT_CORSISTI);
+			rs.next();
+			val = rs.getInt(1);
+		}catch(SQLException sql) {
+			throw sql;
+		}return val;
+	}
 }

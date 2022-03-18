@@ -6,12 +6,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import com.project.architecture.dao.CorsistaDAO;
 import com.project.architecture.dbaccess.DBAccess;
 import com.project.businesscomponent.model.Corsista;
 
+@TestMethodOrder(OrderAnnotation.class)
 class CorsistaBCTest {
 	private static Connection conn;
 	private static Corsista corsista;
@@ -19,6 +23,7 @@ class CorsistaBCTest {
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		conn = DBAccess.getConnection();
+		corsista = new Corsista();
 		corsista.setNomeCorsista("Lucia");
 		corsista.setCognomeCorsista("Rossi");
 		corsista.setCodCorsista(1);
@@ -27,6 +32,7 @@ class CorsistaBCTest {
 	}
 
 	@Test
+	@Order(1)
 	void createTest() {
 		try {
 		CorsistaDAO.getFactory().create(conn, corsista);
@@ -38,6 +44,7 @@ class CorsistaBCTest {
 	}
 	
 	@Test
+	@Order(2)
 	void getByPkTest() {
 		try {
 			Corsista corsista = CorsistaDAO.getFactory().getByPk(conn,1);
@@ -49,6 +56,7 @@ class CorsistaBCTest {
 	}
 	
 	@Test
+	@Order(3)
 	void getAll() {
 		try {
 			Corsista[] corsisti = CorsistaDAO.getFactory().getAll(conn);
@@ -56,6 +64,18 @@ class CorsistaBCTest {
 		}catch(SQLException sql) {
 			sql.printStackTrace();
 			fail("GetAll fallito");
+		}
+	}
+	
+	@Test
+	@Order(4)
+	void corsistaTot() {
+		try {
+			int corsista = CorsistaDAO.getFactory().corsistaTot(conn);
+			System.out.println(corsista);
+		}catch(SQLException sql) {
+			sql.printStackTrace();
+			fail("Count errato");
 		}
 	}
 }
