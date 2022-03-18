@@ -31,7 +31,7 @@ class AmministratoreBCTest {
 		try {
 			
 			//Test non ancora effettuato il codAdmin dovra essere cambiato una volta inseriti dei dati di prova nel db
-			long codAdmin=00L;
+			long codAdmin=2L;
 			Amministratore admin=new Amministratore();
 			admin=AmministratoreDAO.getFactory().getByPk(conn, codAdmin);
 			System.out.println(admin.toString());
