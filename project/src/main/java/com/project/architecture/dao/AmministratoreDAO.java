@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetProvider;
 
 import com.project.businesscomponent.model.Amministratore;
 
@@ -18,6 +19,8 @@ public class AmministratoreDAO implements DAOConstants{
 		return new AmministratoreDAO();
 	}
 	private AmministratoreDAO() {
+		
+		rowSet=RowSetProvider.newFactory().createCachedRowSet();
 		
 	}
 	
