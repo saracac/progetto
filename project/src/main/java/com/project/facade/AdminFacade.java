@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import com.project.businesscomponent.CorsistaBC;
+import com.project.businesscomponent.CorsoBC;
 import com.project.businesscomponent.model.Corsista;
+import com.project.businesscomponent.model.Corso;
 
 // Bisogna importare le classi bc perche nonn erano ancora state fatte al momento della creazione della facciata
 public class AdminFacade {
@@ -41,7 +43,7 @@ public class AdminFacade {
 	
 	public Corso corsoPiuFreq() {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.corsoBC();	
+		return cBC.corsoPiuFreq();	
 	}
 
 	public void deleteCorsi(Corso[]corsi) {
@@ -51,7 +53,7 @@ public class AdminFacade {
 	
 	public Date dataInizioUltimoCorso() {
 		CorsoBC cBC=new CorsoBC();
-		cBC.dataInizioUltimoCorso();
+		return cBC.dataInizioUltimoCorso();
 	}
 	
 	public double durataMediaCorsi() {
@@ -64,7 +66,7 @@ public class AdminFacade {
 		return cBC.numeroComm();
 	}
 	
-	public Corsi[] corsiDisp() {
+	public Corso[] corsiDisp() {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsiDisp();
 	}
