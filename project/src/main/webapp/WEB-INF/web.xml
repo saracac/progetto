@@ -14,5 +14,15 @@
   	<servlet-name>login</servlet-name>
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>elimina</servlet-name>
+  	<servlet-class>com.project.controller.Elimina</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>elimina</servlet-name>
+  	<url-pattern>/Elimina</url-pattern>
+  </servlet-mapping>
 
 </web-app>
