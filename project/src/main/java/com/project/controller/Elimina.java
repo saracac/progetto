@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.project.businesscomponent.model.Corso;
 import com.project.facade.AdminFacade;
 
-@WebServlet("/Elimina")
+//@WebServlet("/Elimina")
 public class Elimina extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static AdminFacade aF;

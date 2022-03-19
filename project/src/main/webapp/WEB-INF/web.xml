@@ -24,5 +24,14 @@
   	<servlet-name>elimina</servlet-name>
   	<url-pattern>/Elimina</url-pattern>
   </servlet-mapping>
+   <servlet>
+  	<servlet-name>inserisci</servlet-name>
+  	<servlet-class>com.project.controller.Inserisci</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>inserisci</servlet-name>
+  	<url-pattern>/Inserisci</url-pattern>
+  </servlet-mapping>
 
 </web-app>
