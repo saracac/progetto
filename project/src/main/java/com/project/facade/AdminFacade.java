@@ -15,7 +15,7 @@ public class AdminFacade {
 	
 	private AdminFacade() {}
 	
-	public AdminFacade getInstance() {
+	public static AdminFacade getInstance() {
 		if (aF==null) 
 			aF=new AdminFacade();
 		return aF;	

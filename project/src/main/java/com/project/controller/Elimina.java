@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +15,8 @@ import com.project.facade.AdminFacade;
 
 //@WebServlet("/Elimina")
 public class Elimina extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private static AdminFacade aF;
+	private static final long serialVersionUID = 6739802845016161106L;
+	private static AdminFacade aF = AdminFacade.getInstance();
 	private Corso[] corsi;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException { // Quando premo il pulsante "Elimina corsi"
