@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.businesscomponent.CorsistaBC;
 import com.project.businesscomponent.model.Corsista;
+import com.project.facade.AdminFacade;
 
 //@WebServlet("/Inserisci")
 public class Inserisci extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
+	private static AdminFacade aF;
+
     public Inserisci() {
     }
 
@@ -27,8 +28,8 @@ public class Inserisci extends HttpServlet {
 	try {
 		corsista.setCodCorsista(Long.parseLong(request.getParameter("codCorsista")));
 		CorsistaBC cBC = new CorsistaBC();
-		cBC.create(corsista);
-		response.sendRedirect("report.jsp");
+		aF.createCorsista(corsista);
+		response.sendRedirect("visualizzastatistiche.jsp");
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
