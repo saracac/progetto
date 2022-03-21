@@ -1,7 +1,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<a class="navbar-left"><img src="img/logo_betacom.jpg"
-			style="max-width: 80px; height: auto; padding-top: 7px;"></a>
+			style="max-width: 80px; height: auto; padding-top: 7px;">
+		</a>
 		<!-- <a class="navbar-brand">Betacom Academy</a> -->
     	  <div class="collapse navbar-collapse navbarCollapse">
 			<%

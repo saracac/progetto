@@ -9,7 +9,7 @@ body {
 }
 
 .navbar-inverse {
-	background-color: #111;
+	background-color: #000;
 }
 
 ::-webkit-scrollbar {
@@ -22,7 +22,7 @@ footer {
 	left: 0;
 	width: 100%;
 	height: 300px;
-	background-color: #111;
+	background-color: #000;
 	color: white;
 }
 
