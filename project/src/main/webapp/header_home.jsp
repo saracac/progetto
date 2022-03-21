@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
-		<a class="navbar-left"><img src="img/logo_betacom.jpg"
-			style="max-width: 80px; height: auto; padding-top: 7px;"></a>
+		<a class="navbar-left"><img src="img/apple.jpg"
+			style="max-width: 80px; height: auto; padding-top: 6px;"></a>
 		<!-- <a class="navbar-brand">Betacom Academy</a> -->
 		<div class="collapse navbar-collapse navbarCollapse">
 			<%
