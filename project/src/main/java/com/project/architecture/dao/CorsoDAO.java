@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.sql.rowset.CachedRowSet;
@@ -109,14 +111,14 @@ public class CorsoDAO implements DAOConstants{
 		return corsi;
 	}
 	
-	public Corso[] getCorsiDisponibili(Connection conn) throws SQLException {
+	public Corso[] getCorsiDisponibili(Connection conn) throws SQLException, ParseException {
 		
 		PreparedStatement ps = conn.prepareStatement(
 				SELECT_CORSI_DISPONIBILI,
 				ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		
-		ps.setDate(1, (java.sql.Date) new java.util.Date());
+		//ps.setDate(1, );
 		
 		ResultSet rs = ps.executeQuery();
 		

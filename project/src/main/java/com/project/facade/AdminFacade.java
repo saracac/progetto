@@ -2,6 +2,7 @@ package com.project.facade;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 
 import com.project.businesscomponent.CorsistaBC;
@@ -68,7 +69,7 @@ public class AdminFacade {
 		return cBC.numeroComm();
 	}
 	
-	public Corso[] corsiDisp() throws SQLException, ClassNotFoundException, IOException {
+	public Corso[] corsiDisp() throws SQLException, ClassNotFoundException, IOException, ParseException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsiDisp();
 	}

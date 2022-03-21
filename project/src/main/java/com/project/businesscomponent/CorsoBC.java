@@ -3,6 +3,7 @@ package com.project.businesscomponent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 
 import com.project.architecture.dao.CorsoDAO;
@@ -40,7 +41,7 @@ public class CorsoBC {
 		return CorsoDAO.getFactory().getByPk(conn, codCorso);
 	}
 	
-	public Corso[] corsiDisp() throws SQLException 
+	public Corso[] corsiDisp() throws SQLException, ParseException 
 	{
 		Corso[] corsi = CorsoDAO.getFactory().getCorsiDisponibili(conn);
 		return corsi;
