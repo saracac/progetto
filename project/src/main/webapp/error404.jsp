@@ -16,7 +16,7 @@
 	<div class="container-fluid text-center">
 		<img src="img/error404.jpg" style="max-width: 100%; padding: 30px 0px;">
 		<a href="home.jsp">
-			<button class="btn btn-primary">Vai alla home</button>
+			<button class="btn btn-primary">Vai alla Home</button>
 		</a>
 	</div>
 
