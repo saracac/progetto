@@ -6,6 +6,9 @@ public interface DAOConstants {
 	String SELECT_ADMIN_BYPK="Select nomeAdmin,cognomeAdmin from Amministratore where codAdmin=?"; 
 	
 	//DOCENTE
+	String SELECT_DOCENTE_SEQ="select docente_seq.nextval from dual";
+	String SELECT_DOCENTE ="Select * from docente";
+	String SELECT_DOCENTE_BY_PK = "Select * from docente where codDocente = ?";
 	
 	//CORSO
 	String SELECT_CORSO_SEQ="select corso_seq.nextval from dual";
