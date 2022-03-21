@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="header_pages.jsp"/>
 <div class="container">
 	<h3>Inserire dati del corsista</h3>
 	<form action="<%=request.getContextPath()%>/Inserisci" method="post"></form>
@@ -29,7 +30,6 @@
 	
 </div>
 <br><button type="submit" class="btn btn-outline-info">Registra corsista</button>
-	</form>
 </div>
 
 
