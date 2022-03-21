@@ -6,18 +6,20 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import com.project.architecture.dao.CorsoDAO;
+import com.project.architecture.dbaccess.DBAccess;
 import com.project.businesscomponent.idgenerator.CorsoIdGenerator;
 import com.project.businesscomponent.model.Corso;
 
 public class CorsoBC {
 	private static Connection conn;
-	private CorsoIdGenerator csGen;
 	
-	public CorsoBC() {}
+	public CorsoBC() throws ClassNotFoundException, IOException, SQLException {
+		conn = DBAccess.getConnection();
+	}
 	
 	public void create(Corso corso) throws ClassNotFoundException, IOException, SQLException
 	{
-		corso.setCodCorso(csGen.getInstance().getNextId());
+		corso.setCodCorso(CorsoIdGenerator.getInstance().getNextId());
 		CorsoDAO.getFactory().create(conn, corso);
 	}
 	
@@ -59,5 +61,9 @@ public class CorsoBC {
 	
 	public double numeroComm() throws SQLException {
 		return CorsoDAO.getFactory().numeroComm(conn);
+	}
+	
+	public Corso[] listaCorsiCorsista(long codCorsista) throws SQLException {
+		return CorsoDAO.getFactory().getCorsiCorsista(conn, codCorsista);
 	}
 }

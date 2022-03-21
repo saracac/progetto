@@ -15,7 +15,7 @@ public interface DAOConstants {
 	String SELECT_CORSO_BY_PK="Select * from corso where codcorso=?";
 	String SELECT_DATA_INIZIO_CORSI="Select datainizio from corso";
 	String SELECT_CORSI="Select * from corso";
-	String SELECT_CORSI_DISPONIBILI="Select * from corso where datainizio >= (SYSDATE - 1)";
+	String SELECT_CORSI_DISPONIBILI="Select * from corso where datainizio >= ";
 	String SELECT_CORSO_PIUFREQ="";
 	String SELECT_DURATA_MEDIA_CORSI="Select avg(datafine - datainizio) from corso group by codcorso";
 	String SELECT_NUMERO_COMMENTI="";
@@ -25,5 +25,8 @@ public interface DAOConstants {
 	String SELECT_CORSISTA_SEQ="select corsista_seq.nextval from dual";
 	String SELECT_CORSISTA ="Select * from corsista";
 	String SELECT_CORSISTA_BY_PK = "Select * from corsista where codCorsista = ?";
-	String COUNT_CORSISTI = "Select count(cdCorsisti) from corsisti";
+	String COUNT_CORSISTI = "Select count(codCorsista) from corsista";
+	
+	//CORSI CORSISTA
+	String SELECT_CORSO_CORSISTA="Select codcorso from corsocorsista where codcorsista = ?";
 }

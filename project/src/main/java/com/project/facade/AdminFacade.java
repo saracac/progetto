@@ -6,8 +6,10 @@ import java.util.Date;
 
 import com.project.businesscomponent.CorsistaBC;
 import com.project.businesscomponent.CorsoBC;
+import com.project.businesscomponent.DocenteBC;
 import com.project.businesscomponent.model.Corsista;
 import com.project.businesscomponent.model.Corso;
+import com.project.businesscomponent.model.Docente;
 
 // Bisogna importare le classi bc perche nonn erano ancora state fatte al momento della creazione della facciata
 public class AdminFacade {
@@ -41,22 +43,22 @@ public class AdminFacade {
 	
 	//CORSO
 	
-	public Corso corsoPiuFreq() throws SQLException {
+	public Corso corsoPiuFreq() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsoPiuFreq();	
 	}
 
-	public void deleteCorsi(Long[]corsi) throws SQLException {
+	public void deleteCorsi(Long[]corsi) throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		cBC.deleteCorsi(corsi);
 	}
 	
-	public Date dataInizioUltimoCorso() throws SQLException {
+	public Date dataInizioUltimoCorso() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.dataInizioUltimoCorso();
 	}
 	
-	public double durataMediaCorsi() throws SQLException {
+	public double durataMediaCorsi() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.durataMediaCorsi();
 	}
@@ -66,16 +68,22 @@ public class AdminFacade {
 		return cBC.numeroComm();
 	}
 	
-	public Corso[] corsiDisp() throws SQLException {
+	public Corso[] corsiDisp() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.corsiDisp();
+	}
+	
+	// CORSO CORSISTA
+	public Corso[] getCorsiCorsista(long codCorsista) throws SQLException, ClassNotFoundException, IOException {
+		CorsoBC cBC = new CorsoBC();
+		return cBC.listaCorsiCorsista(codCorsista);
 	}
 	
 	//DOCENTE
 	
 	public Docente docentePiuCorsi() {
 		DocenteBC dBC= new DocenteBC();
-		return dBC.docentePiuCorsi();
+		return ;
 	}
 	
 }

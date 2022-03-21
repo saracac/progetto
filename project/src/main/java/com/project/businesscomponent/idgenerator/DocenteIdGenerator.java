@@ -9,19 +9,19 @@ import java.sql.Statement;
 import com.project.architecture.dao.DAOConstants;
 import com.project.architecture.dbaccess.DBAccess;
 
-public class CorsoIdGenerator implements IdGeneratorInterface, DAOConstants{
-	private static CorsoIdGenerator istanza;
+public class DocenteIdGenerator implements IdGeneratorInterface, DAOConstants{
+	private static DocenteIdGenerator istanza;
 	private Connection conn;
 	private Statement stmt;
 	private ResultSet rs;
 	
-	private CorsoIdGenerator() throws ClassNotFoundException, IOException, SQLException {
+	private DocenteIdGenerator() throws ClassNotFoundException, IOException, SQLException {
 		conn = DBAccess.getConnection();
 	}
 	
-	public static CorsoIdGenerator getInstance() throws ClassNotFoundException, IOException, SQLException {
+	public static DocenteIdGenerator getInstance() throws ClassNotFoundException, IOException, SQLException {
 		if(istanza == null)
-			istanza = new CorsoIdGenerator();
+			istanza = new DocenteIdGenerator();
 		return istanza;	
 	}
 	
@@ -31,7 +31,7 @@ public class CorsoIdGenerator implements IdGeneratorInterface, DAOConstants{
 		long id=0;
 		try {
 			stmt=conn.createStatement();
-			rs=stmt.executeQuery("SELECT_CORSO_SEQ"); // da inserire
+			rs=stmt.executeQuery("SELECT_DOCENTE_SEQ"); // da inserire
 			rs.next();
 			id=rs.getLong(1);		 
 		}catch (SQLException sql) {

@@ -9,8 +9,8 @@ constraint p_codicecorsista primary key (codcorsista));
 
 -- ADMIN
 
-create table admin (
-codadmin int,
+create table amministratore (
+codadmin number(3),
 nomeadmin varchar2(30) not null,
 cognomeadmin varchar2(30) not null,
 constraint p_codadmin primary key (codadmin));
@@ -23,6 +23,7 @@ nomecorso varchar2(30) not null,
 datainiziocorso date not null,
 datafinecorso date not null,
 commenticorso varchar2(200) not null,
+costocorso number(5,2) not null,
 aulacorso varchar2(30) not null,
 constraint p_codcorso primary key (codcorso),
 constraint data_check check (datainiziocorso < datafinecorso));

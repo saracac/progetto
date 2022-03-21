@@ -111,7 +111,14 @@ public class CorsoDAO implements DAOConstants{
 	
 	public Corso[] getCorsiDisponibili(Connection conn) throws SQLException {
 		
-		ResultSet rs = conn.createStatement().executeQuery(SELECT_CORSI_DISPONIBILI);
+		PreparedStatement ps = conn.prepareStatement(
+				SELECT_CORSI_DISPONIBILI,
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		
+		ps.setDate(1, (java.sql.Date) new java.util.Date());
+		
+		ResultSet rs = ps.executeQuery();
 		
 		rs.last();
 		int dim = rs.getRow();
@@ -172,5 +179,35 @@ public class CorsoDAO implements DAOConstants{
 		ResultSet rs = stmt.executeQuery(SELECT_NUMERO_COMMENTI);
 		
 		return rs.getInt(1);
+	}
+	
+	public Corso[] getCorsiCorsista(Connection conn, long codCorsista) throws SQLException {
+		PreparedStatement ps = conn.prepareStatement(
+				SELECT_CORSO_CORSISTA,
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		
+		ps.setLong(1, codCorsista);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		rs.last();
+		int dim = rs.getRow();
+		Corso[] corsi = new Corso[dim];
+		
+		rs.beforeFirst();
+		
+		for(int i = 0; rs.next() ; i++) {
+			Corso c = new Corso();
+			c.setCodCorso(rs.getLong(1));
+			c.setNomeCorso(rs.getString(2));
+			c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
+			c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
+			c.setCosto(rs.getDouble(5));
+			c.setCommenti(rs.getString(6));
+			c.setAula(rs.getShort(7));
+			corsi[i] = c;
+		}
+		return corsi;
 	}
 }

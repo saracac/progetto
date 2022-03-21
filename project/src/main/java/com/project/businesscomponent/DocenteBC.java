@@ -29,7 +29,7 @@ public class DocenteBC {
 
 	public void create(Docente docente) throws ClassNotFoundException, IOException, SQLException {
 		try {
-			docente.setCodDocente((DocenteIdGenerator.getInstance().getNextId()));
+			docente.setcodDocente((DocenteIdGenerator.getInstance().getNextId()));
 			DocenteDAO.getFactory().create(conn, docente);
 
 		} catch (SQLException sql) {

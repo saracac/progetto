@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
+import javax.sql.rowset.spi.SyncProviderException;
 
 import com.project.businesscomponent.model.Corsista;
 
@@ -34,14 +35,19 @@ public class CorsistaDAO implements DAOConstants {
 			rowSet.setCommand(SELECT_CORSISTA);
 			rowSet.execute(conn);
 			rowSet.moveToInsertRow();
-			rowSet.updateString(1, corsista.getNomeCorsista());
-			rowSet.updateString(2, corsista.getCognomeCorsista());
-			rowSet.updateLong(3, corsista.getCodCorsista());
+			rowSet.updateLong(1, corsista.getCodCorsista());
+			rowSet.updateString(2, corsista.getNomeCorsista());
+			rowSet.updateString(3, corsista.getCognomeCorsista());
 			rowSet.updateLong(4, corsista.getPrecedentiformativi());
 			rowSet.insertRow();
 			rowSet.moveToCurrentRow();
 			rowSet.acceptChanges();
-		} catch(SQLException sql) {
+		} catch (SyncProviderException exc) {
+			System.out.println(exc.getMessage());
+			exc.printStackTrace();
+			System.out.println(exc.getLocalizedMessage());
+		}
+		catch(SQLException sql) {
 			throw sql;
 			}
 	}
@@ -80,9 +86,9 @@ public class CorsistaDAO implements DAOConstants {
 			rs.beforeFirst();
 			for (int i = 0; rs.next(); i++) {
 				Corsista c = new Corsista();
-				c.setNomeCorsista(rs.getString(1));
-				c.setCognomeCorsista(rs.getString(2));
-				c.setCodCorsista(rs.getLong(3));
+				c.setCodCorsista(rs.getLong(1));
+				c.setNomeCorsista(rs.getString(2));
+				c.setCognomeCorsista(rs.getString(3));
 				c.setPrecedentiformativi(rs.getLong(4));
 				corsisti[i] = c;  // una volta terminato il riempimento si inserisce il nuovo c dentro all'array corsisti sopra
 			}

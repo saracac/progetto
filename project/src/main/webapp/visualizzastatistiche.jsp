@@ -19,22 +19,22 @@
 		<h3>Statistiche</h3>
 	</div>
 	<div class="row">
-			<div class="col-md-3 bg-info">Numero Corsisti:</div>
+			 <div class="col-md-3 bg-info">Numero Corsisti:</div>
 			<div class="col-md-3"> <%=aF.corsistaTot() %></div>
 			<div class="col-md-3 bg-info">Corso Più Popolare:</div>
-			<div class="col-md-3"> <%=aF.corsoPiuFreq() %></div>
+			<%--<div class="col-md-3"> <%=aF.corsoPiuFreq() %></div>  --%>
 	</div>
 	<div class="row">
 			<div class="col-md-3 bg-info">Data Inizio Corso:</div>
-			<div class="col-md-3"> <%=aF.dataInizioUltimoCorso() %></div>
+			<%--<div class="col-md-3"> <%=aF.dataInizioUltimoCorso() %></div>--%>
 			<div class="col-md-3 bg-info">Durata Media Dei Corsi:</div>
-			<div class="col-md-3"> <%=aF.durataMediaCorsi()%></div>
+			<%--<div class="col-md-3"> <%=aF.durataMediaCorsi()%></div>--%>
 	</div>
 	<div class="row">
 			<div class="col-md-3 bg-info">Numero di Commenti:</div>
-			<div class="col-md-3"> <%=aF.numeroComm()%></div>
+			<%--<div class="col-md-3"> <%=aF.numeroComm()%></div>--%>
 			<div class="col-md-3 bg-info">Docente con più Corsi</div>
-			<div class="col-md-3"> <%=aF.docentePiuCorsi()%></div>
+			<%-- <div class="col-md-3"> <%=aF.docentePiuCorsi()%></div>  --%>
 	</div>
 	
 	<div class="row">
@@ -45,7 +45,7 @@
 	
 	<%
 	int i=0;
-	Corsista[] corsisti=aF.elencoCorsisti();
+	Corsista[] corsisti = aF.elencoCorsisti();
 	
 	if(corsisti.length==0){
 		%>
@@ -78,7 +78,7 @@
 	    <div id="collapse1" class="panel-collapse collapse">
 	      <ul class="list-group">
 	<%
-		Corso[] corsi=aF.listaCorsiCorsista(c);
+		Corso[] corsi = aF.getCorsiCorsista(c.getCodCorsista());
 		for(Corso cor:corsi){
 	%>
 	        <li class="list-group-item">
