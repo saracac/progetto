@@ -19,6 +19,7 @@
 		<input type="text" class="form-control" name="nome" 
 		placeholder="Nome..." required >
 	</div>
+</div>
 <div class="form-group">
 	<div class="mb-3 col-md-3">
 		<label for="cognome" class="form-label">Cognome</label>
@@ -27,11 +28,8 @@
 	</div>
 	
 </div>
-</div>
-<div class="mb-3 mt-5 col-md-2">
-<button type="submit" class="btn btn-outline-info">Registra corsista</button>
-</div>
-</form>
+<br><button type="submit" class="btn btn-outline-info">Registra corsista</button>
+	</form>
 </div>
 
 

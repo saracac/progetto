@@ -93,7 +93,7 @@ public class CorsistaDAO implements DAOConstants {
 		return corsisti;
 	}
 	
-	String COUNT_CORSISTI = "Select count(cdCorsisti) from corsisti";
+
 	public int corsistaTot(Connection conn) throws SQLException {
 		int val = 0;
 		try {

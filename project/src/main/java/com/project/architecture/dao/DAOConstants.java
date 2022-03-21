@@ -21,4 +21,5 @@ public interface DAOConstants {
 	String SELECT_CORSISTA_SEQ="select corsista_seq.nextval from dual";
 	String SELECT_CORSISTA ="Select * from corsista";
 	String SELECT_CORSISTA_BY_PK = "Select * from corsista where codCorsista = ?";
+	String COUNT_CORSISTI = "Select count(cdCorsisti) from corsisti";
 }
