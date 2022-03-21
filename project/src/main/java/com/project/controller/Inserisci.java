@@ -22,7 +22,7 @@ public class Inserisci extends HttpServlet {
 		corsista.setPrecedentiformativi(1);
 	try {
 		AdminFacade.getInstance().createCorsista(corsista);
-		response.sendRedirect("/visualizzastatistiche.jsp");
+		response.sendRedirect(request.getContextPath() + "/visualizzastatistiche.jsp");
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
