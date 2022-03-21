@@ -1,8 +1,6 @@
 package com.project.utility;
 
-import java.sql.SQLException;
 
-import com.project.businesscomponent.CorsistaBC;
 import com.project.businesscomponent.model.Corsista;
 
 public class InserisciUtility {
@@ -15,10 +13,19 @@ public class InserisciUtility {
 		
 	}
 	
-	public boolean datiCorretti() throws SQLException {
+	public boolean datiCorretti(String nome, String cognome) {
 		try {
-			CorsistaBC cBC = new CorsistaBC();
-			Corsista[] nuovo = CorsistaBC.getAll().getNome
+		Corsista corsista = new Corsista();
+		if(corsista.getNomeCorsista() != null && corsista.getNomeCorsista().isEmpty()) {
+			return true;
+		}else if(corsista.getNomeCorsista().length()<=30 && corsista.getCognomeCorsista().length()<=30) {
+			return true;
+			
+		}else
+			return false;
+	
+		}catch(Exception e) {
+			return false;
 		}
 			
 	}

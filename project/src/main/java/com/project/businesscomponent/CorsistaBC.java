@@ -37,7 +37,7 @@ public class CorsistaBC {
 		}
 	}
 	
-	public Corsista getById(long codCorsista) throws SQLException {
+	public Corsista getByPk(long codCorsista) throws SQLException {
 		try {
 		return CorsistaDAO.getFactory().getByPk(conn, codCorsista);
 		
