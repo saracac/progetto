@@ -8,6 +8,7 @@ import java.util.Date;
 
 import com.project.businesscomponent.CorsistaBC;
 import com.project.businesscomponent.CorsoBC;
+import com.project.businesscomponent.CorsoCorsistaBC;
 import com.project.businesscomponent.DocenteBC;
 import com.project.businesscomponent.model.Corsista;
 import com.project.businesscomponent.model.Corso;
@@ -79,6 +80,10 @@ public class AdminFacade {
 	public Corso[] getCorsiCorsista(long codCorsista) throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC = new CorsoBC();
 		return cBC.listaCorsiCorsista(codCorsista); 
+	}
+	public void createCorsoCorsista(long codCorsista, long codCorso) throws ClassNotFoundException, IOException, SQLException {
+		CorsoCorsistaBC ccBc = new CorsoCorsistaBC();
+		ccBc.create(codCorso, codCorsista); 
 	}
 	
 	//DOCENTE
