@@ -79,7 +79,7 @@ class CorsoCorsistaBCTest {
 	void testGetCorso() {
 		try {
 			CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
-			long corso[]=ccBC.getCorsistaByCorso(codCorsista1);
+			long []corso=ccBC.getCorsistaByCorso(codCorsista1);
 			for(long c:corso)
 				System.out.println(c+"\t");
 
