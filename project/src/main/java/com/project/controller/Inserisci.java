@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.businesscomponent.model.Corsista;
+import com.project.businesscomponent.model.CorsoCorsista;
 import com.project.facade.AdminFacade;
 import com.project.utility.InserisciUtility;
 
@@ -24,10 +25,13 @@ public class Inserisci extends HttpServlet {
 		corsista.setCognomeCorsista(cognome);
 		String corso = request.getParameter("corso");
 		corsista.setPrecedentiformativi(Long.parseLong(corso));
+		String codice = request.getParameter("1");
+		CorsoCorsista.setCodCorso(Long.parseLong(codice));
 		try {
 			InserisciUtility.getFactory();
 			if (InserisciUtility.isValidName(nome) && InserisciUtility.isValidSurname(cognome)) {
 				AdminFacade.getInstance().createCorsista(corsista);
+				AdminFacade.getInstance().createCorsoCorsista(Long parseLong(codice), serialVersionUID);
 				response.sendRedirect(request.getContextPath() + "/visualizzastatistiche.jsp");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/inserisci.jsp");

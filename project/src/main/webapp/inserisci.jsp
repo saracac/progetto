@@ -47,22 +47,25 @@
 		<input type="text" class="form-control" name="cognome" 
 		placeholder="Cognome..." required >
 		<br>
-			<div class="dropdown">
-  				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-   				 Lista corsi
-   				<span class="caret"></span>
-  				</button>
-  				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-		  		<%
+	<div class="input-group mb-3">
+  		<div class="input-group-prepend">
+    		
+ 		 </div>
+	  <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+ 		 <%
 		  			Corso[] corsi = AdminFacade.getInstance().corsiDisp();
 					for (Corso c : corsi) {
 		  		%>
-			    	<li><a class="dropdown-item" id="corso"><%=c.getNomeCorso()%></a></li>
-			    <%
-					}
-			    %>
-			    </ul>
-			</div>
+	  
+	    <option value="1"><%=c.getNomeCorso() %></option>
+	   
+	  	<% 	}
+					%>
+	  </select>
+	  
+</div>
+	
+			
 		<br>
 		<button type="submit" class="btn btn-outline-info">Registra corsista</button>
 	</div>
@@ -70,8 +73,8 @@
 	</form>
 	</div>
 	<%
-		}
-	%>
+	}%>
+	
 <footer class="footer"><%@include file="footer.html" %></footer>
 </body>
 </html>
