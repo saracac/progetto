@@ -15,6 +15,27 @@
 </head>
 <body>
 <jsp:include page="header_pages.jsp"/>
+<%
+		String admin = (String) session.getAttribute("nomeAdmin");
+		if (admin == null) {
+	%>
+	<div class="container">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h2>Accesso Negato</h2>
+			</div>
+		<div class="panel-body">
+			<div>
+				<p>Per poter accedere a questa pagina,</p> 
+				<p>effettua il login!</p>
+				<a href="login.jsp">Login</a>
+			</div>
+		</div>
+		</div>
+	</div>
+	<%
+		} else {
+	%>
 <div class="container" >
 	<div class="page-header">
 		<h3>Statistiche</h3>
@@ -137,7 +158,7 @@
 	</div>
 	
 <%
-	}
+	}}
 %>
 
 </div>

@@ -26,6 +26,16 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>com.project.controller.Logout</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>elimina</servlet-name>
   	<servlet-class>com.project.controller.Elimina</servlet-class>
   </servlet>
