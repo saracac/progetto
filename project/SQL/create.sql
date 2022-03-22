@@ -60,3 +60,6 @@ select nomecorso, count(*) cont
 from corso left join corsocorsista
 on corso.codcorso = corsocorsista.codcorso
 group by corso.nomecorso;
+
+create view view_diffdate as
+select datafinecorso-datainiziocorso diff from corso;

@@ -33,7 +33,7 @@
         <ul class="nav navbar-nav">
      			<li><a href="home.jsp" id="home">Home</a></li>
       			<li><a href="inserisci.jsp" id="insert">Inserisci</a></li>
-      			<li><a href="#" id="view">Visualizza</a></li>
+      			<li><a href="visualizzastatistiche.jsp" id="view">Visualizza</a></li>
       			<!-- <li><a href="elimina.jsp" id="delete">Elimina</a></li> -->
       			<li><a>
       			<form action="/<%=application.getServletContextName()%>/Elimina" method="get">

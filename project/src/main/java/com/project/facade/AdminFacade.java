@@ -62,7 +62,7 @@ public class AdminFacade {
 	
 	public double durataMediaCorsi() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.durataMediaCorsi(); // DA FARE
+		return cBC.durataMediaCorsi();
 	}
 	
 	public int numeroComm() throws SQLException, ClassNotFoundException, IOException {

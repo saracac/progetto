@@ -17,7 +17,7 @@ public interface DAOConstants {
 	String SELECT_CORSI="Select * from corso";
 	String SELECT_CORSI_DISPONIBILI="Select * from corso where datainiziocorso >= TO_DATE('2022-02-11', 'YYYY-MM-DD')";
 	String SELECT_CORSO_PIUFREQ="";
-	String SELECT_DURATA_MEDIA_CORSI="Select avg(datafinecorso - datainiziocorso) from corso group by codcorso";
+	String SELECT_DURATA_MEDIA_CORSI="Select trunc(avg(diff)) from view_diffdate";
 	String SELECT_NUMERO_COMMENTI="";
 	String DELETE_CORSO="Delete from corso where codcorso=?";
 	
