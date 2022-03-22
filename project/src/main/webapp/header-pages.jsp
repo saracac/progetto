@@ -38,7 +38,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="login.jsp">
 					<span class="glyphicon glyphicon-log-in"></span> Log-in</a>
-				</li>
+				</li> 
 		</ul>
 		<%
 			} else {
