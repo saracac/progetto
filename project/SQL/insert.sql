@@ -1,7 +1,7 @@
 -- ADMIN
 
 insert into AMMINISTRATORE values(1, 'Carlo', 'Martello');
-insert into AMMINISTRATORE values(2, 'Sandra', 'Raimondi');
+insert into AMMINISTRATORE values(2, 'Sandro', 'Raimondi');
 insert into AMMINISTRATORE values(3, 'Sara', 'Banda');
 insert into AMMINISTRATORE values(4, 'Eugenio', 'Verdi');
 

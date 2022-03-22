@@ -7,7 +7,7 @@
 <%@include file="CDN.html" %>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
-<title>Insert title here</title>
+<title>Inserisci</title>
 </head>
 <body>
 <jsp:include page="header_pages.jsp"/>
