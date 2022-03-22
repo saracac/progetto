@@ -9,7 +9,7 @@
 	<title>Eliminazione corsi</title>
 </head>
 <body>
-<jsp:include page="header_home.jsp"/>
+<jsp:include page="header-pages.jsp"/>
 	<%
 		String admin = (String) session.getAttribute("nomeAdmin");
 		if (admin == null) {

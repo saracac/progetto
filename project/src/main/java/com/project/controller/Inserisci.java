@@ -22,7 +22,8 @@ public class Inserisci extends HttpServlet {
 		corsista.setNomeCorsista(nome);
 		String cognome = request.getParameter("cognome");
 		corsista.setCognomeCorsista(cognome);
-		corsista.setPrecedentiformativi(1);
+		String corso = request.getParameter("corso");
+		corsista.setPrecedentiformativi(Long.parseLong(corso));
 		try {
 			InserisciUtility.getFactory();
 			if (InserisciUtility.isValidName(nome) && InserisciUtility.isValidSurname(cognome)) {

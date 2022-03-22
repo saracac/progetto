@@ -53,3 +53,10 @@ create sequence corsista_seq;
 
 -- DOCENTE SEQ
 create sequence docente_seq;
+
+-- VIEWS
+create view view_corsopiufreq as
+select nomecorso, count(*) cont
+from corso left join corsocorsista
+on corso.codcorso = corsocorsista.codcorso
+group by corso.nomecorso;

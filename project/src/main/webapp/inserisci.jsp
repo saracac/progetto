@@ -1,3 +1,5 @@
+<%@page import="com.project.facade.AdminFacade"%>
+<%@page import="com.project.businesscomponent.model.Corso"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" errorPage="error404.jsp" %>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
 <title>Inserisci</title>
 </head>
 <body>
-<jsp:include page="header_pages.jsp"/>
+<jsp:include page="header-pages.jsp"/>
 	<%
 		String admin = (String) session.getAttribute("nomeAdmin");
 		if (admin == null) {
@@ -44,6 +46,23 @@
 		<label for="cognome" class="form-label">Cognome</label>
 		<input type="text" class="form-control" name="cognome" 
 		placeholder="Cognome..." required >
+		<br>
+			<div class="dropdown">
+  				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+   				 Lista corsi
+   				<span class="caret"></span>
+  				</button>
+  				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  		<%
+		  			Corso[] corsi = AdminFacade.getInstance().corsiDisp();
+					for (Corso c : corsi) {
+		  		%>
+			    	<li><a class="dropdown-item" id="corso"><%=c.getNomeCorso()%></a></li>
+			    <%
+					}
+			    %>
+			    </ul>
+			</div>
 		<br>
 		<button type="submit" class="btn btn-outline-info">Registra corsista</button>
 	</div>
