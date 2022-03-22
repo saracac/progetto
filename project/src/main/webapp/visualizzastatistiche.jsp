@@ -102,7 +102,10 @@
 	
 		}
 	}
-	
+	%>
+	<br>
+	<br>
+	<% 
 	
 	Corso [] corso=aF.corsiDisp();
 	if(corso.length==0){

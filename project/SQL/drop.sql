@@ -2,7 +2,7 @@
 drop table corsista cascade constraints;
 
 -- ADMIN
-drop table admin cascade constraints;
+drop table amministratore cascade constraints;
 
 -- CORSO
 drop table corso cascade constraints;

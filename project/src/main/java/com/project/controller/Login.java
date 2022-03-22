@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 		
 		if(nTentativi>5)
 			response.sendRedirect("accessonegato.jsp");
-		else if(codiceAdmin!=null&&nomeAdmin!=null) {
+		else if(codiceAdmin!=null&&nomeAdmin!=null&&!codiceAdmin.equals("")) {
 			long codAdmin=Long.parseLong(request.getParameter("codAdmin"));
 			System.out.println(nTentativi);
 			try {
@@ -46,6 +46,11 @@ public class Login extends HttpServlet {
 			}catch(SQLException sql) {
 				System.err.println("SQLException");
 			}
+		}
+		else {
+		nTentativi++;
+		session.setAttribute("tentativo", nTentativi);
+		response.sendRedirect("login.jsp");
 		}
 	}
 
