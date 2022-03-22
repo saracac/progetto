@@ -29,7 +29,9 @@ public class InserisciUtility {
 		}
 			
 	}
-	
+	public static boolean isValid(String nome, String cognome) {
+		String regex = 
+	}
 	
 
 }

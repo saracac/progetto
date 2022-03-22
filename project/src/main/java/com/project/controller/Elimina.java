@@ -2,6 +2,7 @@ package com.project.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class Elimina extends HttpServlet {
 			corsi = aF.corsiDisp(); // Ottengo i corsi disponibili
 			session.setAttribute("corsi", corsi); // Imposto corsi come parametro di sessione
 			response.sendRedirect(request.getContextPath() + "/elimina.jsp"); // Reindirizzo alla Jsp
-		} catch (SQLException e) { // Se non voglio gestirla qui devo rilanciarla direttamente (throw)
+		} catch (SQLException | ClassNotFoundException | ParseException e) { // Se non voglio gestirla qui devo rilanciarla direttamente (throw)
 			e.printStackTrace();
 		}
 	}
@@ -40,7 +41,7 @@ public class Elimina extends HttpServlet {
         	}
         try {
 			aF.deleteCorsi(corsiDaEliminare.toArray(new Long[0])); // Passa la lista alla facciata per l'eliminazione
-		} catch (SQLException e) { // Se non voglio gestirla qui devo rilanciarla direttamente (throw)
+		} catch (SQLException | ClassNotFoundException e) { // Se non voglio gestirla qui devo rilanciarla direttamente (throw)
 			e.printStackTrace();
 		} 
 	}
