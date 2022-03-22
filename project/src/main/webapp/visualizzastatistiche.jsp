@@ -71,8 +71,8 @@
 	  <div class="panel panel-default">
 	    <div class="row">
 	      	<div class="col-md-3 "><h4><%=c.getNomeCorsista() %></h4></div>
-			<div class="col-md-3"> <h4><%=c.getNomeCorsista() %></h4></div>
-			<div class="col-md-3"><h4><%=c.getNomeCorsista() %></h4></div>
+			<div class="col-md-3"> <h4><%=c.getCognomeCorsista() %></h4></div>
+			<div class="col-md-3"><h4><%=c.getCodCorsista() %></h4></div>
 			<div class="col-md-3"><a data-toggle="collapse" href="#collapse1">Elenco Corsi Frequentati</a> </div>
 	    </div>
 	    <div id="collapse1" class="panel-collapse collapse">
@@ -102,6 +102,7 @@
 	
 		}
 	}
+	
 	
 	Corso [] corso=aF.corsiDisp();
 	if(corso.length==0){
