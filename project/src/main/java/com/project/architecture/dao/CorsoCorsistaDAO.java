@@ -76,7 +76,7 @@ public class CorsoCorsistaDAO implements DAOConstants{
 			ps.setLong(1, codCorso);
 			rowSet.populate(ps.executeQuery());
 			while(rowSet.next()) {
-				corsista.add(rowSet.getLong(1));
+				corsista.add(rowSet.getLong(2));
 			}		
 		}catch(SQLException exc){
 			throw exc;

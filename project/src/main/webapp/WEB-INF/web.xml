@@ -26,6 +26,16 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>visual</servlet-name>
+  	<servlet-class>com.project.controller.VisualizzaStatCorsista</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>visual</servlet-name>
+  	<url-pattern>/visual</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>logout</servlet-name>
   	<servlet-class>com.project.controller.Logout</servlet-class>
   </servlet>

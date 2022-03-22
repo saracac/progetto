@@ -58,11 +58,13 @@
 			<div class="col-md-3 bg-info">Docente con più Corsi</div>
 			<%-- <div class="col-md-3"> <%=aF.docentePiuCorsi()%></div>  --%>
 	</div>
-	
+	<br>
+	<br>
 	<div class="row">
 			<div class="col-md-12 bg-info">Elenco Corsisti:</div>
 			
 	</div>
+	
 	
 	
 	<%
@@ -89,37 +91,13 @@
 		for(Corsista c:corsisti){
 	%>
 	
-	<div class="panel-group">
-	  <div class="panel panel-default">
+	
 	    <div class="row">
-	      	<div class="col-md-3 "><h4><%=c.getNomeCorsista() %></h4></div>
-			<div class="col-md-3"> <h4><%=c.getCognomeCorsista() %></h4></div>
-			<div class="col-md-3"><h4><%=c.getCodCorsista() %></h4></div>
-			<div class="col-md-3"><a data-toggle="collapse" href="#collapse1">Elenco Corsi Frequentati</a> </div>
+	      	<div class="col-md-3 "><%=c.getNomeCorsista() %></div>
+			<div class="col-md-3"> <%=c.getCognomeCorsista() %></div>
+			<div class="col-md-3"><%=c.getCodCorsista() %></div>
+			<div class="col-md-3"><a  href="/visual?cod=<%=c.getCodCorsista()%>">Elenco Corsi Frequentati</a> </div>
 	    </div>
-	    <div id="collapse1" class="panel-collapse collapse">
-	      <ul class="list-group">
-	<%
-		Corso[] corsi = aF.getCorsiCorsista(c.getCodCorsista());
-		for(Corso cor:corsi){
-	%>
-	        <li class="list-group-item">
-	         
-		        <div class="col-md-2 "><h4><%=cor.getNomeCorso() %></h4></div>
-				<div class="col-md-2"> <h4><%=cor.getDataInizio() %></h4></div>
-				<div class="col-md-2"><h4><%=cor.getDataFine() %></h4></div>
-				<div class="col-md-2 "><h4><%=cor.getCodCorso() %></h4></div>
-				<div class="col-md-2 "><h4><%=cor.getAula() %></h4></div>
-				<div class="col-md-2 "><h4><%=cor.getCosto() %></h4></div>
-				
-			</li>
-	<%
-		}
-	%>
-	      </ul>
-	    </div>
-	  </div>
-	</div>
 	<%
 	
 		}
@@ -138,27 +116,19 @@
 		<%	
 	}else{
 	%>
-	<div class="panel-group">
-	  <div class="panel panel-default">
-		<ul class="list-group">
+		<div class="row bg-info">Corsi Ancora Disponibili</div>
 		<% for(Corso c:corso){%>
-			<li class="list-group-item">
+			<div class="row">
 	         
-		        <div class="col-md-2 "><h4><%=c.getNomeCorso() %></h4></div>
-				<div class="col-md-2"> <h4><%=c.getDataInizio() %></h4></div>
-				<div class="col-md-2"><h4><%=c.getDataFine() %></h4></div>
-				<div class="col-md-2 "><h4><%=c.getCodCorso() %></h4></div>
-				<div class="col-md-2 "><h4><%=c.getAula() %></h4></div>
-				<div class="col-md-2 "><h4><%=c.getCosto() %></h4></div>
-				
-			</li>
-		<%} %>
-		</ul>
-	</div>
-	</div>
-	
-<%
-	}}
+		        <div class="col-md-2 "><%=c.getNomeCorso() %></div>
+				<div class="col-md-2"> <%=c.getDataInizio() %></div>
+				<div class="col-md-2"><%=c.getDataFine() %></div>
+				<div class="col-md-2 "><%=c.getCodCorso() %></div>
+				<div class="col-md-2 "><%=c.getAula() %></div>
+				<div class="col-md-2 "><%=c.getCosto() %></div>
+			</div>
+			
+		<%}}}
 %>
 
 </div>
