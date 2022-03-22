@@ -14,6 +14,7 @@
 <title>Visualizzazione Statistiche</title>
 </head>
 <body>
+<jsp:include page="header_pages.jsp"/>
 <div class="container" >
 	<div class="page-header">
 		<h3>Statistiche</h3>
