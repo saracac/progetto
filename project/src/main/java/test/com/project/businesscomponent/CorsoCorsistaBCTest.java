@@ -1,4 +1,4 @@
-package test.com.project.businesscomponent;
+		package test.com.project.businesscomponent;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,11 +19,10 @@ class CorsoCorsistaBCTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		codCorso1=1;
-		codCorso2=2;
-		codCorsista1=11;
-		codCorsista2=10;
-		
+		codCorso1=5;
+		codCorso2=6;
+		codCorsista1=7;
+		codCorsista2=8;
 	}
 	
 	@Order(1)
@@ -78,10 +77,10 @@ class CorsoCorsistaBCTest {
 	@Test
 	void testGetCorso() {
 		try {
-			CorsoCorsistaBC ccBC=new CorsoCorsistaBC();
-			long []corso=ccBC.getCorsistaByCorso(codCorsista1);
-			for(long c:corso)
-				System.out.println(c+"\t");
+			CorsoCorsistaBC ccBC = new CorsoCorsistaBC();
+			long[] corso = ccBC.getCorsoByCorsista(codCorsista1);
+			for(long c : corso)
+				System.out.println(c);
 
 			System.out.println("getCorso ok");
 			

@@ -30,7 +30,7 @@ public interface DAOConstants {
 	//CORSI CORSISTA
 	String SELECT_CORSO_CORSISTA="Select codcorso from corsocorsista where codcorsista = ?";
 	String SELECT_CORSO_CORSISTA_TOT="Select * from corsocorsista";
-	String DELETE_CORSO_CORSISTA="Delete from corso where codcorso=? and codCorsista=?";
+	String DELETE_CORSO_CORSISTA="Delete from corsocorsista where codcorso=? and codCorsista=?";
 	String SELECT_CORSO_BY_CORSISTA = "Select * from corsocorsista where codCorsista = ?";
 	String SELECT_CORSISTA_BY_CORSO = "Select * from corsocorsista where codCorso = ?";
 }
