@@ -29,6 +29,7 @@ public class AmministratoreDAO implements DAOConstants{
 		
 	}
 	
+	@SuppressWarnings("finally")
 	public Amministratore getByPk(Connection conn,long codAdmin) throws SQLException{
 		Amministratore admin=null;
 		try {
