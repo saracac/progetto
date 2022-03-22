@@ -34,7 +34,7 @@
 	  	<div class="btn-group-vertical" style="margin-top:100px;">
 	  		<div class="containter" style="width:200px;">
 			    <a class="btn btn-primary btn-block" href="inserisci.jsp" style="margin-top:20px;">Inserisci</a>
-				<a class="btn btn-primary btn-block" style="margin-top:20px;">Visualizza</a>
+				<a class="btn btn-primary btn-block" href="visualizzastatistiche.jsp" style="margin-top:20px;">Visualizza</a>
 				<a class="btn btn-primary btn-block" href="elimina.jsp" style="margin-top:20px;">Elimina</a>
 			</div>
 	  	</div>

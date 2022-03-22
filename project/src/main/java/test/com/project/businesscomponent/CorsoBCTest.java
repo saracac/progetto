@@ -2,8 +2,10 @@ package test.com.project.businesscomponent;
 
 import static org.junit.Assert.fail;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 
 import org.junit.jupiter.api.AfterAll;
@@ -16,13 +18,15 @@ import org.junit.jupiter.api.TestMethodOrder;
 import com.project.architecture.dao.CorsoDAO;
 import com.project.architecture.dbaccess.DBAccess;
 import com.project.businesscomponent.CorsoBC;
+import com.project.businesscomponent.model.Corsista;
 import com.project.businesscomponent.model.Corso;
 
 @TestMethodOrder(OrderAnnotation.class)
 class CorsoBCTest 
 {
 	private static Corso corso, corsi1, corsi2;
-	private static Corso[] corsi;
+	private static Corsista corsista;
+	private static Long[] corsi;
 	private static Connection conn;
 	
 	@BeforeAll
@@ -55,16 +59,22 @@ class CorsoBCTest
 		corsi2.setCommenti("Scienze intermedie");
 		corsi2.setAula((short) 18);
 		
-		corsi = new Corso[2];
+		corsi = new Long[2];
 		
-		corsi[0] = corsi1;
-		corsi[1] = corsi2;
+		corsi[0] = corsi1.getCodCorso();
+		corsi[1] = corsi2.getCodCorso();
+		
+		corsista = new Corsista();
+		corsista.setCodCorsista(10);
+		corsista.setNomeCorsista("Pierpaolina");
+		corsista.setCognomeCorsista("Uga");
+		corsista.setPrecedentiformativi(12);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {	
 		try {
-			CorsoDAO.getFactory().delete(conn, corso);
+			CorsoDAO.getFactory().delete(conn, corso.getCodCorso());
 			System.out.println("Corso eliminato");
 			} catch(SQLException exc) 
 			{
@@ -146,16 +156,50 @@ class CorsoBCTest
 	
 	@Test
 	@Order(5)
-	void testDeleteCorsi() {
-		CorsoBC cBC = new CorsoBC();
+	void testGetCorsiDisp() {
 		try {
+			Corso[] corsi = CorsoDAO.getFactory().getCorsiDisponibili(conn);
+			System.out.println("Corsi disponibili:");
+			for(Corso c : corsi)
+				System.out.println(c);
+			} catch(SQLException | ParseException exc)
+			{
+				exc.printStackTrace();
+				System.out.println(exc.getMessage());
+				System.out.println(exc.getCause());
+				fail("Ottenimento lista corsi disponibili fallito");
+			}
+	}
+	
+	@Test
+	@Order(6)
+	void testGetListaCorsiCorsista() {
+		try {
+			Corso[] corsi = CorsoDAO.getFactory().getCorsiCorsista(conn, corsista.getCodCorsista());
+			System.out.println("Corsi disponibili:");
+			for(Corso c : corsi)
+				System.out.println(c);
+			} catch(SQLException exc)
+			{
+				exc.printStackTrace();
+				System.out.println(exc.getMessage());
+				System.out.println(exc.getCause());
+				fail("Ottenimento lista corsi disponibili fallito");
+			}
+	}
+	
+	@Test
+	@Order(7)
+	void testDeleteCorsi() {
+		CorsoBC cBC;
+		try {
+			cBC = new CorsoBC();
 			cBC.deleteCorsi(corsi);
-		} catch(SQLException exc) 
+		} catch(SQLException | ClassNotFoundException | IOException exc) 
 		{
 			exc.printStackTrace();
 			System.out.println(exc.getMessage());
 			System.out.println(exc.getCause());
-			System.out.println(exc.getErrorCode());
 			fail("Eliminazione corsi fallita");
 		}
 		System.out.println("Corsi rimasti: ");

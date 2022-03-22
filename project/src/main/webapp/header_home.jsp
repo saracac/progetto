@@ -6,7 +6,7 @@
 		<!-- <a class="navbar-brand">Betacom Academy</a> -->
 		<div class="collapse navbar-collapse navbarCollapse">
 			<%
-			session.setAttribute("nomeAdmin", "CarloMartello");
+			//session.setAttribute("nomeAdmin", "CarloMartello");
 			String admin = (String) session.getAttribute("nomeAdmin");
 			if (admin == null) {
 			%>
