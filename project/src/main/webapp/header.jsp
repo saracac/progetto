@@ -35,7 +35,7 @@
 			//session.setAttribute("nomeAdmin", "CarloMartello");
 			String admin = (String) session.getAttribute("nomeAdmin");
 			if (admin == null) {
-			%>
+			%> 
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="registra.jsp">
 			<span class="glyphicon glyphicon-user"></span> Sign-Up
