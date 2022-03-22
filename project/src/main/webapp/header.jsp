@@ -1,20 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<%@include file="CDN.html" %>
-<meta name="viewport" content="width=device.width, inital-scale=1">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-
-
-
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="margin-bottom: 30px;">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle"
@@ -49,13 +34,13 @@
 		%>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#">Benvenuto <%=admin%></a></li>
-            <li>
+                <li>
 					<form action="/<%=application.getServletContextName()%>/logout"
 						method="post">
 						<input type="submit" class="btn btn-danger navbar-btn"
 							value="Logout" />
 					</form>
-				</li>
+			</li>
 		</ul>
 		
 		<%
@@ -68,9 +53,3 @@
 
 
 
-
-
-
-
-</body>
-</html>

@@ -1,20 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<%@include file="CDN.html" %>
-<meta name="viewport" content="width=device.width, inital-scale=1">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-
-
-
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="margin-bottom: 30px;">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle"
@@ -40,27 +25,36 @@
 					<span class="glyphicon glyphicon-log-in"></span> Log-in</a>
 				</li> 
 		</ul>
+		
 		<%
 			} else {
 		%>
+		 
         <ul class="nav navbar-nav">
      			<li><a href="home.jsp" id="home">Home</a></li>
       			<li><a href="inserisci.jsp" id="insert">Inserisci</a></li>
       			<li><a href="#" id="view">Visualizza</a></li>
-      			<li><a href="elimina.jsp" id="delete">Elimina</a></li>
+      			<!-- <li><a href="elimina.jsp" id="delete">Elimina</a></li> -->
+      			<li><a>
+      			<form action="/<%=application.getServletContextName()%>/Elimina" method="get">
+						<input type="submit" value="Elimina" name="elimina"
+						style="background-color: #000; border:none;"/>
+					</form>
+			    </a></li>
     		</ul>	
         
         
 		<ul class="nav navbar-nav navbar-right"> 
             <li><a>Benvenuto <%=admin%></a></li>
-				<li>
+				<li><a>
 					<form action="/<%=application.getServletContextName()%>/logout"
 						method="post">
-						<input type="submit" class="btn btn-danger navbar-btn"
+						<input type="submit" class="btn btn-danger"
 							value="Logout" />
 					</form>
-				</li>
+				</a></li>
 		</ul>
+		
 		
 		<%
 			}
@@ -69,12 +63,4 @@
 </div>
 </nav>
 
-
-
-
-
-
-
-
-</body>
-</html>
+ 
