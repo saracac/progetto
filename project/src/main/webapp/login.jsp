@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<% if(session.getAttribute("tentativo")!=null&&((int)session.getAttribute("tentativo"))>5)
+	response.sendRedirect("accessonegato.jsp");
+	if(session.getAttribute("nomeAdmin")!=null)
+		response.sendRedirect("home.jsp");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +28,7 @@
 					<span class="input-group-addon">
 						<i class="glyphicon glyphicon-user"></i>
 					</span>
-					<input type="text" name="codAdmin"placeholder="Codice Amministratore....."class="form-control">
+					<input type="number" name="codAdmin"placeholder="Codice Amministratore....."class="form-control">
 				</div>
 			</div>
 			<div class="col-md-6 control-label" ></div>
@@ -43,7 +48,11 @@
 		</div>
 		
 		<div class="row">
-			<div class="col-md-4 col-md-offset-5">
+			<div class="col-md-5 control-label" ><%if(session.getAttribute("tentativo")!=null){
+				%>Tentativi rimasti:
+				<%= 6-(int)session.getAttribute("tentativo") %>
+			<%} %></div>
+			<div class="col-md-4">
 				<button type="submit" class="btn btn-primary">
 					Invia&nbsp;<span class="glyphicon glyphicon-log-in"></span>
 				</button>
