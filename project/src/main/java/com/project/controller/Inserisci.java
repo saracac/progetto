@@ -23,15 +23,16 @@ public class Inserisci extends HttpServlet {
 		corsista.setNomeCorsista(nome);
 		String cognome = request.getParameter("cognome");
 		corsista.setCognomeCorsista(cognome);
-		String corso = request.getParameter("corso");
-		corsista.setPrecedentiformativi(Long.parseLong(corso));
+//		String corso = request.getParameter("corso");
+//		corsista.setPrecedentiformativi(Long.parseLong(corso));
 		String codice = request.getParameter("1");
-		CorsoCorsista.setCodCorso(Long.parseLong(codice));
+		CorsoCorsista corsocorsista = new CorsoCorsista();
+		corsocorsista.setCodCorso(Long.parseLong(codice));
 		try {
 			InserisciUtility.getFactory();
 			if (InserisciUtility.isValidName(nome) && InserisciUtility.isValidSurname(cognome)) {
-				AdminFacade.getInstance().createCorsista(corsista);
-				AdminFacade.getInstance().createCorsoCorsista(Long parseLong(codice), serialVersionUID);
+//				AdminFacade.getInstance().createCorsista(corsista);
+				AdminFacade.getInstance().createCorsoCorsista(codice, codcor  );
 				response.sendRedirect(request.getContextPath() + "/visualizzastatistiche.jsp");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/inserisci.jsp");

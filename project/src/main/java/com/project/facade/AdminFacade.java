@@ -85,6 +85,10 @@ public class AdminFacade {
 		CorsoCorsistaBC ccBc = new CorsoCorsistaBC();
 		ccBc.create(codCorso, codCorsista); 
 	}
+	public long[] getCorsoByCorsista(long codCorsista) throws SQLException, ClassNotFoundException, IOException {
+		CorsoCorsistaBC ccBc = new CorsoCorsistaBC();
+		return ccBc.getCorsoByCorsista(codCorsista);
+	}
 	
 	//DOCENTE
 	
