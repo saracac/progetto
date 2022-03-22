@@ -24,7 +24,6 @@
       			<li><a href="visualizzastatistiche.jsp" id="view">Visualizza</a></li>
       			<li>
 	      			<form action="/<%=application.getServletContextName()%>/Elimina" method="get">
-						<label for="elimina">Elimina</label>
 						<input type="submit" value="elimina" name="elimina"/>
 					</form>
 				</li>

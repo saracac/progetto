@@ -3,6 +3,7 @@ package com.project.facade;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.project.businesscomponent.CorsistaBC;
@@ -46,10 +47,10 @@ public class AdminFacade {
 	
 	public Corso corsoPiuFreq() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.corsoPiuFreq();	
+		return cBC.corsoPiuFreq();	// DA FARE
 	}
 
-	public void deleteCorsi(Long[]corsi) throws SQLException, ClassNotFoundException, IOException {
+	public void deleteCorsi(ArrayList<Long> corsi) throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		cBC.deleteCorsi(corsi);
 	}
@@ -61,30 +62,29 @@ public class AdminFacade {
 	
 	public double durataMediaCorsi() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.durataMediaCorsi();
+		return cBC.durataMediaCorsi(); // DA FARE
 	}
 	
-	public int numeroComm() {
+	public int numeroComm() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.numeroComm();
+		return cBC.numeroComm(); // DA FARE
 	}
 	
 	public Corso[] corsiDisp() throws SQLException, ClassNotFoundException, IOException, ParseException {
 		CorsoBC cBC=new CorsoBC();
-		return cBC.corsiDisp();
+		return cBC.corsiDisp(); 
 	}
 	
 	// CORSO CORSISTA
 	public Corso[] getCorsiCorsista(long codCorsista) throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC = new CorsoBC();
-		return cBC.listaCorsiCorsista(codCorsista);
+		return cBC.listaCorsiCorsista(codCorsista); 
 	}
 	
 	//DOCENTE
 	
-	public Docente docentePiuCorsi() {
+	public Docente docentePiuCorsi() throws SQLException, ClassNotFoundException, IOException {
 		DocenteBC dBC= new DocenteBC();
-		return ;
+		return dBC.docentePiuCorsi(); // DA FARE
 	}
-	
 }

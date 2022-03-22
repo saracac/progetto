@@ -102,4 +102,8 @@ public class DocenteDAO implements DAOConstants {
 		}
 		return val;
 	}
+	
+	public Docente docentePiuCorsi(Connection conn) { // TODO
+		return new Docente();
+	}
 }

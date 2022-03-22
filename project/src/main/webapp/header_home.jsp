@@ -1,8 +1,8 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="padding-bottom: 30px;">
 	<div class="container-fluid">	
 	
 		<a class="navbar-left"><img src="img/apple.jpg"
-			style="max-width: 60px; height: auto; padding-top: 7px;">
+			style="max-width: 60px; height: auto;">
 		</a>
 		<!-- <a class="navbar-brand">Betacom Academy</a> -->
 		<div class="collapse navbar-collapse navbarCollapse">

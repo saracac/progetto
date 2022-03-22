@@ -53,4 +53,12 @@ public class DocenteBC {
 			throw sql;
 		}
 	}
+	
+	public Docente docentePiuCorsi() throws SQLException {
+		try {
+			return DocenteDAO.getFactory().docentePiuCorsi(conn);
+		} catch (SQLException sql) {
+			throw sql;
+		}
+	}
 }
