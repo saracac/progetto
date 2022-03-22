@@ -1,5 +1,6 @@
 <nav class="navbar navbar-inverse">
-	<div class="container-fluid">
+	<div class="container-fluid">	
+	
 		<a class="navbar-left"><img src="img/apple.jpg"
 			style="max-width: 60px; height: auto; padding-top: 7px;">
 		</a>
