@@ -18,12 +18,15 @@ import com.project.facade.AdminFacade;
 public class Elimina extends HttpServlet {
 	private static final long serialVersionUID = 6739802845016161106L;
 	private static AdminFacade aF = AdminFacade.getInstance();
-	private Corso[] corsi;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException { // Quando premo il pulsante "Elimina corsi"
 		HttpSession session = request.getSession();
 		try {
-			corsi = aF.corsiDisp(); // Ottengo i corsi disponibili
+			Corso[] corsi = aF.corsiDisp(); // Ottengo i corsi disponibili
+			
+			for(Corso c : corsi)
+				System.out.println("corso: " + c);
+			
 			session.setAttribute("corsi", corsi); // Imposto corsi come parametro di sessione
 			response.sendRedirect(request.getContextPath() + "/elimina.jsp"); // Reindirizzo alla Jsp
 		} catch (SQLException | ClassNotFoundException | ParseException e) { // Se non voglio gestirla qui devo rilanciarla direttamente (throw)

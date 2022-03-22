@@ -6,11 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.RowSetFactory;
 import javax.sql.rowset.RowSetProvider;
 
 import com.project.businesscomponent.model.Corso;
@@ -18,34 +16,42 @@ import com.project.businesscomponent.model.Corso;
 public class CorsoDAO implements DAOConstants{
 	private CachedRowSet rowSet;
 	
-	private CorsoDAO() throws SQLException {
-		RowSetFactory rowSetFactory = RowSetProvider.newFactory();
-		rowSet = rowSetFactory.createCachedRowSet();
-	}
-	
 	public static CorsoDAO getFactory() throws SQLException {
 		return new CorsoDAO();
 	}
-
-	public void create(Connection conn, Corso corso) throws SQLException {
-		rowSet.moveToInsertRow();
-		rowSet.setLong(1, corso.getCodCorso());
-		rowSet.setString(2, corso.getNomeCorso());
-		rowSet.setDate(3, new java.sql.Date(corso.getDataInizio().getTime()));
-		rowSet.setDate(4, new java.sql.Date(corso.getDataFine().getTime()));
-		rowSet.setDouble(5, corso.getCosto());
-		rowSet.setString(6, corso.getCommenti());
-		rowSet.setShort(7, corso.getAula());
-		rowSet.insertRow();
-		rowSet.moveToCurrentRow();
-		rowSet.acceptChanges(conn);
+	
+	private CorsoDAO() throws SQLException {
+		rowSet = RowSetProvider.newFactory().createCachedRowSet();
 	}
 	
-	public void delete(Connection conn, Long codCorso) throws SQLException {
+	public void create(Connection conn, Corso corso) throws SQLException {
+	try {
+		rowSet.setCommand(SELECT_CORSI);
+		rowSet.execute(conn);
+		rowSet.moveToInsertRow();
+		rowSet.updateLong(1, corso.getCodCorso());
+		rowSet.updateString(2, corso.getNomeCorso());
+		rowSet.updateDate(3, new java.sql.Date(corso.getDataInizio().getTime()));
+		rowSet.updateDate(4, new java.sql.Date(corso.getDataFine().getTime()));
+		rowSet.updateString(5, corso.getCommenti());
+		rowSet.updateDouble(6, corso.getCosto());
+		rowSet.updateString(7, corso.getAula());
+		rowSet.insertRow();
+		rowSet.moveToCurrentRow();
+		rowSet.acceptChanges();
+	} catch(SQLException exc) {
+		exc.printStackTrace();
+	}
+	}
+	
+	public void delete(Connection conn, long codCorso) throws SQLException {
+		try {
 		PreparedStatement ps = conn.prepareStatement(DELETE_CORSO);
 		ps.setLong(1, codCorso);
 		ps.execute();
-		conn.commit();
+		} catch (Exception exc) {
+			exc.printStackTrace();
+		}
 	}
 	
 	public Corso getByPk(Connection conn, long codCorso) throws SQLException {
@@ -61,9 +67,9 @@ public class CorsoDAO implements DAOConstants{
 		c.setNomeCorso(rs.getString(2));
 		c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
 		c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
-		c.setCosto(rs.getDouble(5));
-		c.setCommenti(rs.getString(6));
-		c.setAula(rs.getShort(7));
+		c.setCommenti(rs.getString(5));
+		c.setCosto(rs.getDouble(6));
+		c.setAula(rs.getString(7));
 		return c;
 		}
 		
@@ -103,24 +109,20 @@ public class CorsoDAO implements DAOConstants{
 		c.setNomeCorso(rs.getString(2));
 		c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
 		c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
-		c.setCosto(rs.getDouble(5));
-		c.setCommenti(rs.getString(6));
-		c.setAula(rs.getShort(7));
+		c.setCommenti(rs.getString(5));
+		c.setCosto(rs.getDouble(6));
+		c.setAula(rs.getString(7));
 		corsi[i] = c;
 		}
 		return corsi;
 	}
 	
 	public Corso[] getCorsiDisponibili(Connection conn) throws SQLException, ParseException {
-		
-		PreparedStatement ps = conn.prepareStatement(
-				SELECT_CORSI_DISPONIBILI,
+		Statement stmt = conn.createStatement( 
 				ResultSet.TYPE_SCROLL_INSENSITIVE,
-				ResultSet.CONCUR_READ_ONLY);
+				ResultSet.CONCUR_READ_ONLY); 
 		
-		//ps.setDate(1, );
-		
-		ResultSet rs = ps.executeQuery();
+		ResultSet rs = stmt.executeQuery(SELECT_CORSI_DISPONIBILI);
 		
 		rs.last();
 		int dim = rs.getRow();
@@ -134,9 +136,9 @@ public class CorsoDAO implements DAOConstants{
 		c.setNomeCorso(rs.getString(2));
 		c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
 		c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
-		c.setCosto(rs.getDouble(5));
-		c.setCommenti(rs.getString(6));
-		c.setAula(rs.getShort(7));
+		c.setCommenti(rs.getString(5));
+		c.setCosto(rs.getDouble(6));
+		c.setAula(rs.getString(7));
 		corsi[i] = c;
 		}
 		return corsi;
@@ -156,9 +158,9 @@ public class CorsoDAO implements DAOConstants{
 			c.setNomeCorso(rs.getString(2));
 			c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
 			c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
-			c.setCosto(rs.getDouble(5));
-			c.setCommenti(rs.getString(6));
-			c.setAula(rs.getShort(7));
+			c.setCommenti(rs.getString(5));
+			c.setCosto(rs.getDouble(6));
+			c.setAula(rs.getString(7));
 			return c;
 		}
 		return null;
@@ -205,9 +207,9 @@ public class CorsoDAO implements DAOConstants{
 			c.setNomeCorso(rs.getString(2));
 			c.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
 			c.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
-			c.setCosto(rs.getDouble(5));
-			c.setCommenti(rs.getString(6));
-			c.setAula(rs.getShort(7));
+			c.setCommenti(rs.getString(5));
+			c.setCosto(rs.getDouble(6));
+			c.setAula(rs.getString(7));
 			corsi[i] = c;
 		}
 		return corsi;

@@ -35,7 +35,9 @@
 	  		<div class="containter" style="width:200px;">
 			    <a class="btn btn-primary btn-block" href="inserisci.jsp" style="margin-top:20px;">Inserisci</a>
 				<a class="btn btn-primary btn-block" href="visualizzastatistiche.jsp" style="margin-top:20px;">Visualizza</a>
-				<a class="btn btn-primary btn-block" href="elimina.jsp" style="margin-top:20px;">Elimina</a>
+				<form action="/<%=application.getServletContextName()%>/Elimina" method="get">
+					<input type="submit" value="Elimina" class="btn btn-primary btn-block" style="margin-top:20px;" />
+				</form>
 			</div>
 	  	</div>
 	</div>

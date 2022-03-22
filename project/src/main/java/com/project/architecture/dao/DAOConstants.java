@@ -15,11 +15,11 @@ public interface DAOConstants {
 	String SELECT_CORSO_BY_PK="Select * from corso where codcorso=?";
 	String SELECT_DATA_INIZIO_CORSI="Select datainiziocorso from corso";
 	String SELECT_CORSI="Select * from corso";
-	String SELECT_CORSI_DISPONIBILI="Select * from corso where datainiziocorso >= TO_DATE('2022-08-03', 'YYYY-MM-DD')";
+	String SELECT_CORSI_DISPONIBILI="Select * from corso where datainiziocorso >= TO_DATE('2022-02-11', 'YYYY-MM-DD')";
 	String SELECT_CORSO_PIUFREQ="";
 	String SELECT_DURATA_MEDIA_CORSI="Select avg(datafinecorso - datainiziocorso) from corso group by codcorso";
 	String SELECT_NUMERO_COMMENTI="";
-	String DELETE_CORSO="Select nomecorso, datainiziocorso, datafinecorso, costo, commenti, aula from corso where codcorso=?";
+	String DELETE_CORSO="Delete from corso where codcorso=?";
 	
 	//CORSISTA
 	String SELECT_CORSISTA_SEQ="select corsista_seq.nextval from dual";

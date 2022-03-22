@@ -12,7 +12,7 @@
 	<div class="page-header">
 		<h3>Scegli quali corsi vuoi eliminare</h3>
 	</div>
-		<form action="<%=application.getServletContextName()%>/Elimina" method="post">
+		<form action="/<%=application.getServletContextName()%>/Elimina" method="post">
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>

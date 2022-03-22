@@ -9,7 +9,7 @@ public class Corso {
 	private Date dataFine;
 	private double costo;
 	private String commenti;
-	private short aula;
+	private String aula;
 	
 	public long getCodCorso() {
 		return codCorso;
@@ -47,10 +47,10 @@ public class Corso {
 	public void setCommenti(String commenti) {
 		this.commenti = commenti;
 	}
-	public short getAula() {
+	public String getAula() {
 		return aula;
 	}
-	public void setAula(short aula) {
+	public void setAula(String aula) {
 		this.aula = aula;
 	}
 	

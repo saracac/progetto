@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import com.project.architecture.dao.CorsistaDAO;
 import com.project.architecture.dao.CorsoDAO;
 import com.project.architecture.dbaccess.DBAccess;
 import com.project.businesscomponent.CorsoBC;
@@ -26,40 +28,41 @@ class CorsoBCTest
 {
 	private static Corso corso, corsi1, corsi2;
 	private static Corsista corsista;
-	private static Long[] corsi;
+	private static long[] corsi;
 	private static Connection conn;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		conn = DBAccess.getConnection();
+		
 		corso = new Corso();
-		corso.setCodCorso(20);
+		corso.setCodCorso(16);
 		corso.setNomeCorso("Matematica");
-		corso.setDataInizio(new Date());
-		corso.setDataFine(new Date());
-		corso.setCosto(150.00);
+		corso.setDataInizio(new GregorianCalendar(2022, 02, 03).getTime());
+		corso.setDataFine(new GregorianCalendar(2022, 04, 02).getTime());
 		corso.setCommenti("matematica avanzata");
-		corso.setAula((short) 33);
+		corso.setCosto(150);
+		corso.setAula("33A");
 		
 		corsi1 = new Corso();
-		corsi1.setCodCorso(21);
+		corsi1.setCodCorso(17);
 		corsi1.setNomeCorso("Informatica");
-		corsi1.setDataInizio(new Date());
-		corsi1.setDataFine(new Date());
-		corsi1.setCosto(300.00);
+		corsi1.setDataInizio(new GregorianCalendar(2022, 01, 10).getTime());
+		corsi1.setDataFine(new GregorianCalendar(2022, 02, 13).getTime());
 		corsi1.setCommenti("informatica base");
-		corsi1.setAula((short) 12);
+		corsi1.setCosto(300);
+		corsi1.setAula("12B");
 		
 		corsi2 = new Corso();
-		corsi2.setCodCorso(22);
+		corsi2.setCodCorso(18);
 		corsi2.setNomeCorso("Scienze");
-		corsi2.setDataInizio(new Date());
-		corsi2.setDataFine(new Date());
-		corsi2.setCosto(500.10);
+		corsi2.setDataInizio(new GregorianCalendar(2022, 03, 01).getTime());
+		corsi2.setDataFine(new GregorianCalendar(2022, 05, 23).getTime());
 		corsi2.setCommenti("Scienze intermedie");
-		corsi2.setAula((short) 18);
+		corsi2.setCosto(500);
+		corsi2.setAula("18C");
 		
-		corsi = new Long[2];
+		corsi = new long[2];
 		
 		corsi[0] = corsi1.getCodCorso();
 		corsi[1] = corsi2.getCodCorso();
@@ -93,6 +96,7 @@ class CorsoBCTest
 		CorsoDAO.getFactory().create(conn, corso);
 		CorsoDAO.getFactory().create(conn, corsi1);
 		CorsoDAO.getFactory().create(conn, corsi2);
+		CorsistaDAO.getFactory().create(conn, corsista);
 		System.out.println("Corso creato");
 		} catch(SQLException exc) 
 		{
@@ -176,7 +180,7 @@ class CorsoBCTest
 	void testGetListaCorsiCorsista() {
 		try {
 			Corso[] corsi = CorsoDAO.getFactory().getCorsiCorsista(conn, corsista.getCodCorsista());
-			System.out.println("Corsi disponibili:");
+			System.out.println("Corsi corsista:");
 			for(Corso c : corsi)
 				System.out.println(c);
 			} catch(SQLException exc)
