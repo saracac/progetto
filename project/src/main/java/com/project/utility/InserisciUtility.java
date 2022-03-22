@@ -17,19 +17,22 @@ public class InserisciUtility {
 
 	public static boolean isValidName(String nome) {
 		try {
-			String regex = "^[a-zA-Z]{5, 29}$";
+			String regex = "^([a-zA-Z]{2,29})$";
 			Pattern p = Pattern.compile(regex);
-			Corsista corsista = new Corsista();
-			if (corsista.getNomeCorsista() == null) {
+//			Corsista corsista = new Corsista();
+			if (nome == null) {
 				return false;
-			} else if (corsista.getNomeCorsista().length() <= 30) {
-				return true;
-			} else {
+			} 
+//			else if (corsista.getNomeCorsista().length() <= 30) {
+//				return true;
+//			} 
+			else {
 				Matcher m = p.matcher(nome);
 				return m.matches();
 			}
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 
 		}
@@ -37,19 +40,22 @@ public class InserisciUtility {
 
 	public static boolean isValidSurname(String cognome) {
 		try {
-			String regex = "^[a-zA-Z]{5, 29}$";
+			String regex = "^([a-zA-Z]{2,29})$";
 			Pattern p = Pattern.compile(regex);
-			Corsista corsista = new Corsista();
-			if (corsista.getCognomeCorsista() == null) {
+//			Corsista corsista = new Corsista();
+			if (cognome == null) {
 				return false;
-			} else if (corsista.getCognomeCorsista().length() <= 30) {
-				return true;
-			} else {
+			}
+//			} else if (corsista.getCognomeCorsista().length() <= 30) {
+//				return true;
+//			} 
+			else {
 				Matcher m = p.matcher(cognome);
 				return m.matches();
 			}
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 
 		}
