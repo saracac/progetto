@@ -11,10 +11,31 @@
 </head>
 <body>
 <jsp:include page="header_pages.jsp"/>
-<div class="container">
+	<%
+		String admin = (String) session.getAttribute("nomeAdmin");
+		if (admin == null) {
+	%>
+	<div class="container">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h2>Accesso Negato</h2>
+			</div>
+		<div class="panel-body">
+			<div>
+				<p>Per poter accedere a questa pagina,</p> 
+				<p>effettua il login!</p>
+				<a href="login.jsp">Login</a>
+			</div>
+		</div>
+		</div>
+	</div>
+	<%
+		} else {
+	%>
+	<div class="container">
 	<h3>Inserire dati del corsista</h3>
 	<form action="<%=request.getContextPath()%>/Inserisci" method="post">
-<div class="form-group">
+	<div class="form-group">
 	<div class="mb-3 col-md-3">
 		<label for="nome" class="form-label">Nome</label>
 		<input type="text" class="form-control" name="nome" 
@@ -26,9 +47,12 @@
 		<br>
 		<button type="submit" class="btn btn-outline-info">Registra corsista</button>
 	</div>
-</div>
+	</div>
 	</form>
-</div>
+	</div>
+	<%
+		}
+	%>
 <footer class="footer"><%@include file="footer.html" %></footer>
 </body>
 </html>

@@ -4,7 +4,7 @@
 			style="max-width: 60px; height: auto; padding-top: 7px;">
 		</a>
 		<!-- <a class="navbar-brand">Betacom Academy</a> -->
-    	  <div class="collapse navbar-collapse navbarCollapse">
+		<div class="collapse navbar-collapse navbarCollapse">
 			<%
 				String admin = (String) session.getAttribute("nomeAdmin");
 				if (admin == null) {
@@ -21,8 +21,13 @@
    		 	<ul class="nav navbar-nav">
      			<li><a href="home.jsp" id="home">Home</a></li>
       			<li><a href="inserisci.jsp" id="insert">Inserisci</a></li>
-      			<li><a href="#" id="view">Visualizza</a></li>
-      			<li><a href="elimina.jsp" id="delete">Elimina</a></li>
+      			<li><a href="visualizzastatistiche.jsp" id="view">Visualizza</a></li>
+      			<li>
+	      			<form action="/<%=application.getServletContextName()%>/Elimina" method="get">
+						<label for="elimina">Elimina</label>
+						<input type="submit" value="elimina" name="elimina"/>
+					</form>
+				</li>
     		</ul>	
 			<ul class="nav navbar-nav navbar-right">
 				<li><a>Benvenuto <%=admin%></a></li>

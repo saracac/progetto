@@ -44,11 +44,12 @@ public class CorsoDAO implements DAOConstants{
 	}
 	}
 	
-	public void delete(Connection conn, long codCorso) throws SQLException {
+	public void delete(Connection conn, long codcorso) throws SQLException {
 		try {
 		PreparedStatement ps = conn.prepareStatement(DELETE_CORSO);
-		ps.setLong(1, codCorso);
+		ps.setLong(1, codcorso);
 		ps.execute();
+		conn.commit();
 		} catch (Exception exc) {
 			exc.printStackTrace();
 		}

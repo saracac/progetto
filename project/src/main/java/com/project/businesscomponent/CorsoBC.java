@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.project.architecture.dao.CorsoDAO;
@@ -29,10 +30,10 @@ public class CorsoBC {
 		CorsoDAO.getFactory().delete(conn, codCorso);
 	}
 	
-	public void deleteCorsi(long[] corsi) throws SQLException
+	public void deleteCorsi(ArrayList<Long> corsi) throws SQLException
 	{
-		for (int i = 0; i < corsi.length ; i++) {
-			CorsoDAO.getFactory().delete(conn, corsi[i]);
+		for (int i = 0; i < corsi.size() ; i++) {
+			CorsoDAO.getFactory().delete(conn, corsi.get(i));
 		}
 	}
 	
@@ -60,7 +61,7 @@ public class CorsoBC {
 		return CorsoDAO.getFactory().durataMediaCorsi(conn);
 	}
 	
-	public double numeroComm() throws SQLException {
+	public int numeroComm() throws SQLException {
 		return CorsoDAO.getFactory().numeroComm(conn);
 	}
 	

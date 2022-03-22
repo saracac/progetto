@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -28,7 +29,7 @@ class CorsoBCTest
 {
 	private static Corso corso, corsi1, corsi2;
 	private static Corsista corsista;
-	private static long[] corsi;
+	private static ArrayList<Long> corsi;
 	private static Connection conn;
 	
 	@BeforeAll
@@ -62,10 +63,10 @@ class CorsoBCTest
 		corsi2.setCosto(500);
 		corsi2.setAula("18C");
 		
-		corsi = new long[2];
+		corsi = new ArrayList<Long>();
 		
-		corsi[0] = corsi1.getCodCorso();
-		corsi[1] = corsi2.getCodCorso();
+		corsi.add(0, corsi1.getCodCorso());
+		corsi.add(1, corsi2.getCodCorso());
 		
 		corsista = new Corsista();
 		corsista.setCodCorsista(10);
