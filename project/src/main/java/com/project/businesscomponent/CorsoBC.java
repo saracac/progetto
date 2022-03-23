@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.project.architecture.dao.CorsoDAO;
 import com.project.architecture.dbaccess.DBAccess;
@@ -48,7 +47,7 @@ public class CorsoBC {
 		return corsi;
 	}
 	
-	public Date dataInizioUltimoCorso() throws SQLException 
+	public String dataInizioUltimoCorso() throws SQLException 
 	{
 		return CorsoDAO.getFactory().dataInizioUltimoCorso(conn);
 	}

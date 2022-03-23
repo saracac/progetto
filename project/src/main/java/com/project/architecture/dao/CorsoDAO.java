@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.sql.rowset.CachedRowSet;
@@ -77,18 +78,19 @@ public class CorsoDAO implements DAOConstants{
 		return null;
 	}
 	
-	public Date dataInizioUltimoCorso(Connection conn) throws SQLException {
+	public String dataInizioUltimoCorso(Connection conn) throws SQLException {
 		Statement stmt = conn.createStatement( 
 				ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY); 
 		
 		ResultSet rs = stmt.executeQuery(SELECT_DATA_INIZIO_CORSI);
-		Date last = null;
-		if (rs.last()) 
-		{
-			last = new java.util.Date(rs.getDate(1).getTime());
-		}
-		return last;
+		
+		rs.next();
+		
+		Date data = new java.util.Date(rs.getDate(1).getTime());
+		String dataFormat = new SimpleDateFormat("dd-MM-yyyy").format(data);
+		
+		return dataFormat;
 	}
 	
 	public Corso[] getAll(Connection conn) throws SQLException {
@@ -172,7 +174,7 @@ public class CorsoDAO implements DAOConstants{
 				ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet rs = stmt.executeQuery(SELECT_DURATA_MEDIA_CORSI);
-	
+		rs.next();
 		return rs.getDouble(1);
 	}
 	
@@ -182,7 +184,7 @@ public class CorsoDAO implements DAOConstants{
 				ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet rs = stmt.executeQuery(SELECT_NUMERO_COMMENTI);
-		
+		rs.next();
 		return rs.getInt(1);
 	}
 	

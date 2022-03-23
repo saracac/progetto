@@ -13,7 +13,7 @@ public interface DAOConstants {
 	//CORSO
 	String SELECT_CORSO_SEQ="select corso_seq.nextval from dual";
 	String SELECT_CORSO_BY_PK="Select * from corso where codcorso=?";
-	String SELECT_DATA_INIZIO_CORSI="Select datainiziocorso from corso";
+	String SELECT_DATA_INIZIO_CORSI="Select datainiziocorso from corso order by datainiziocorso desc";
 	String SELECT_CORSI="Select * from corso";
 	String SELECT_CORSI_DISPONIBILI="Select * from corso where datainiziocorso >= TO_DATE('2022-02-11', 'YYYY-MM-DD')";
 	String SELECT_CORSO_PIUFREQ="";

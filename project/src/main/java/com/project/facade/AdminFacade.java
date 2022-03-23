@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.project.businesscomponent.CorsistaBC;
 import com.project.businesscomponent.CorsoBC;
@@ -60,7 +59,7 @@ public class AdminFacade {
 		cBC.deleteCorsi(corsi);
 	}
 	
-	public Date dataInizioUltimoCorso() throws SQLException, ClassNotFoundException, IOException {
+	public String dataInizioUltimoCorso() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
 		return cBC.dataInizioUltimoCorso();
 	}
