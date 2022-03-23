@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.businesscomponent.model.Corsista;
+import com.project.businesscomponent.model.Corso;
 import com.project.businesscomponent.model.CorsoCorsista;
 import com.project.facade.AdminFacade;
 import com.project.utility.InserisciUtility;
@@ -25,14 +26,18 @@ public class Inserisci extends HttpServlet {
 		corsista.setCognomeCorsista(cognome);
 //		String corso = request.getParameter("corso");
 //		corsista.setPrecedentiformativi(Long.parseLong(corso));
-		String codice = request.getParameter("1");
-		CorsoCorsista corsocorsista = new CorsoCorsista();
-		corsocorsista.setCodCorso(Long.parseLong(codice));
+//		String codice = request.getParameter("1");
+//		CorsoCorsista corsocorsista = new CorsoCorsista();
+//		corsocorsista.setCodCorso(Long.parseLong(codice));
+		Corso corso = new Corso();
+		String nomec = request.getParameter("1");
+		corso.setNomeCorso(nomec);
+		
 		try {
 			InserisciUtility.getFactory();
 			if (InserisciUtility.isValidName(nome) && InserisciUtility.isValidSurname(cognome)) {
-//				AdminFacade.getInstance().createCorsista(corsista);
-				AdminFacade.getInstance().createCorsoCorsista(codice, codcor  );
+				AdminFacade.getInstance().createCorsista(corsista);
+				AdminFacade.getInstance().createCorso(corso);
 				response.sendRedirect(request.getContextPath() + "/visualizzastatistiche.jsp");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/inserisci.jsp");

@@ -45,6 +45,10 @@ public class AdminFacade {
 	}
 	
 	//CORSO
+	public void createCorso(Corso corso) throws ClassNotFoundException, IOException, SQLException {
+		CorsoBC corsoBC = new CorsoBC();
+		corsoBC.create(corso);
+	}
 	
 	public Corso corsoPiuFreq() throws SQLException, ClassNotFoundException, IOException {
 		CorsoBC cBC=new CorsoBC();
